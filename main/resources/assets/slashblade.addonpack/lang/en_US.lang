@@ -1,0 +1,126 @@
+item.flammpfeil.slashblade.named.yukari.name=yukari
+item.flammpfeil.slashblade.named.tboen.name=Knife Of BE
+
+item.flammpfeil.slashblade.named.nihil.name=nihil
+item.flammpfeil.slashblade.named.nihilex.name=bloody nihil
+item.flammpfeil.slashblade.named.nihilul.name=crimson nihil
+item.flammpfeil.slashblade.named.crimsoncherry.name=crimson cherry
+item.flammpfeil.slashblade.named.nihilbx.name=purgatorium memento mori
+
+item.flammpfeil.slashblade.named.laemmle.name=laemmle
+
+item.flammpfeil.slashblade.named.darkraven.name=yamigarasu
+item.flammpfeil.slashblade.named.snowcrow.name=snowcrow
+
+item.flammpfeil.slashblade.named.toyako.name=toyako
+item.flammpfeil.slashblade.named.fluorescentbar.name=FluorescentBar
+
+item.flammpfeil.slashblade.named.wanderer.name=Blade of Wanderer
+item.flammpfeil.slashblade.named.wanderer.rfblade.name=RfBlade of Wanderer
+
+item.flammpfeil.slashblade.named.frostwolfa.name=FrostyCherry-Crescent Schnee-
+item.flammpfeil.slashblade.named.frostwolfb.name=GloriousFang-Freezing Lvateinn-
+
+item.flammpfeil.slashblade.named.blademaster.greenmist.name=Sacred-Green Mist-
+item.flammpfeil.slashblade.named.blademaster.aquablaze.name=Crescent-Aqua Blaze-
+item.flammpfeil.slashblade.named.blademaster.moonlightcherry.name=MoonlightCherry-Storm Slash-
+
+item.flammpfeil.slashblade.named.kamuy.base.name=Kamuy-Kutune Sirka-
+item.flammpfeil.slashblade.named.kamuy.water.name=Kamuy-WAKKA-
+item.flammpfeil.slashblade.named.kamuy.fire.name=Kamuy-APE-
+item.flammpfeil.slashblade.named.kamuy.lightning.name=Kamuy-KANNA-
+
+flammpfeil.slashblade.specialattack.rapidphantomswords=Rapid Attack PhantomSwords
+flammpfeil.slashblade.specialattack.spiraledge=Spiral Edge
+flammpfeil.slashblade.specialattack.galephantomswords=Gale Storm PhantomSwords
+
+flammpfeil.slashblade.specialattack.none=Meditation
+flammpfeil.slashblade.specialattack.aquaedge=AquaEdge
+flammpfeil.slashblade.specialattack.flarespiral=FlareSpiral
+flammpfeil.slashblade.specialattack.lightningswords=LightningSwords
+
+achievement.flammpfeil.slashblade.yukari=yukari
+achievement.flammpfeil.slashblade.yukari.desc=§8§l§oExtra
+#achievement.flammpfeil.slashblade.yukari.pos=14,-3
+achievement.flammpfeil.slashblade.yukari.pos=15, 11
+achievement.flammpfeil.slashblade.tboen=Knife Of BE
+achievement.flammpfeil.slashblade.tboen.desc=§8§l§oExtra
+achievement.flammpfeil.slashblade.tboen.pos=14,10
+
+achievement.flammpfeil.slashblade.nihil=nihil
+achievement.flammpfeil.slashblade.nihil.desc=nihil
+achievement.flammpfeil.slashblade.nihil.pos=22, -4
+achievement.flammpfeil.slashblade.nihilex=bloody nihil
+achievement.flammpfeil.slashblade.nihilex.desc=bloody nihil
+achievement.flammpfeil.slashblade.nihilex.pos=23, -4
+achievement.flammpfeil.slashblade.nihilul=crimson nihil
+achievement.flammpfeil.slashblade.nihilul.desc=crimson nihil
+achievement.flammpfeil.slashblade.nihilul.pos=24, -4
+achievement.flammpfeil.slashblade.crimsoncherry=crimson cherry
+achievement.flammpfeil.slashblade.crimsoncherry.desc=crimson cherry
+achievement.flammpfeil.slashblade.crimsoncherry.pos=24,-3
+achievement.flammpfeil.slashblade.nihilbx=purgatorium memento mori
+achievement.flammpfeil.slashblade.nihilbx.desc=purgatorium memento mori
+#achievement.flammpfeil.slashblade.nihilbx.pos=30, -1
+achievement.flammpfeil.slashblade.nihilbx.pos=25, -4
+
+achievement.flammpfeil.slashblade.laemmle=laemmle
+achievement.flammpfeil.slashblade.laemmle.desc=laemmle
+achievement.flammpfeil.slashblade.laemmle.pos=28, 0
+#achievement.flammpfeil.slashblade.darkraven.pos=25, -5
+
+achievement.flammpfeil.slashblade.darkraven=yamigarasu
+achievement.flammpfeil.slashblade.darkraven.desc=yamigarasu
+#achievement.flammpfeil.slashblade.darkraven.pos=18, -5
+achievement.flammpfeil.slashblade.darkraven.pos=19, -2
+achievement.flammpfeil.slashblade.snowcrow=snowcrow
+achievement.flammpfeil.slashblade.snowcrow.desc=snowcrow
+#achievement.flammpfeil.slashblade.snowcrow.pos=19, -4
+achievement.flammpfeil.slashblade.snowcrow.pos=17, -0
+
+#achievement.flammpfeil.slashblade.toyako.pos=22,-3
+
+achievement.flammpfeil.slashblade.fluorescentbar=FluorescentBar
+achievement.flammpfeil.slashblade.fluorescentbar.desc=FluorescentBar
+achievement.flammpfeil.slashblade.fluorescentbar.pos=15, -0
+
+achievement.flammpfeil.slashblade.wanderer=Blade of Wanderer
+achievement.flammpfeil.slashblade.wanderer.desc=Blade of Wanderer
+achievement.flammpfeil.slashblade.wanderer.pos=22, -1
+achievement.flammpfeil.slashblade.wanderer.rfblade=RfBlade of Wanderer
+achievement.flammpfeil.slashblade.wanderer.rfblade.desc=RfBlade of Wanderer
+achievement.flammpfeil.slashblade.wanderer.rfblade.pos=23, -1
+
+achievement.flammpfeil.slashblade.frostwolfa=FrostyCherry-Crescent Schnee-
+achievement.flammpfeil.slashblade.frostwolfa.desc=FrostyCherry-Crescent Schnee-
+achievement.flammpfeil.slashblade.frostwolfa.pos=15, 8
+achievement.flammpfeil.slashblade.frostwolfb=GloriousFang-Freezing Lvateinn-
+achievement.flammpfeil.slashblade.frostwolfb.desc=GloriousFang-Freezing Lvateinn-
+achievement.flammpfeil.slashblade.frostwolfb.pos=16, 8
+
+#achievement.flammpfeil.slashblade.wrap.Wa.katana.pos=8, 12
+#achievement.flammpfeil.slashblade.wrap.Wa.tachi.pos=9, 13
+
+achievement.flammpfeil.slashblade.blademaster.greenmist=Sacred-Green Mist-
+achievement.flammpfeil.slashblade.blademaster.moonlightcherry.pos=15, 10
+achievement.flammpfeil.slashblade.blademaster.aquablaze=Crescent-Aqua Blaze-
+achievement.flammpfeil.slashblade.blademaster.aquablaze.pos=16, 10
+achievement.flammpfeil.slashblade.blademaster.moonlightcherry=MoonlightCherry-Storm Slash-
+achievement.flammpfeil.slashblade.blademaster.greenmist.pos=17, 10
+
+achievement.flammpfeil.slashblade.kamuy.base=Kamuy-Kutune Sirka-
+achievement.flammpfeil.slashblade.kamuy.base.desc=§8§l§okamuy within<br>natural
+#achievement.flammpfeil.slashblade.kamuy.base.pos=22, 8
+achievement.flammpfeil.slashblade.kamuy.base.pos=15, 9
+achievement.flammpfeil.slashblade.kamuy.water=Kamuy-WAKKA-
+achievement.flammpfeil.slashblade.kamuy.water.desc=§8§l§owakka kamuy within<br>water
+#achievement.flammpfeil.slashblade.kamuy.water.pos=24, 8
+achievement.flammpfeil.slashblade.kamuy.water.pos=17, 9
+achievement.flammpfeil.slashblade.kamuy.fire=Kamuy-APE-
+achievement.flammpfeil.slashblade.kamuy.fire.desc=§8§l§oape kamuy within<br>fire
+#achievement.flammpfeil.slashblade.kamuy.fire.pos=25, 9
+achievement.flammpfeil.slashblade.kamuy.fire.pos=16, 9
+achievement.flammpfeil.slashblade.kamuy.lightning=Kamuy-KANNA-
+achievement.flammpfeil.slashblade.kamuy.lightning.desc=§8§l§okanna kamuy within<br>lightning
+#achievement.flammpfeil.slashblade.kamuy.lightning.pos=26, 10
+achievement.flammpfeil.slashblade.kamuy.lightning.pos=18, 9

@@ -1,0 +1,18 @@
+[
+{
+  "modid": "slashblade.addonpack",
+  "name": "Slashblade-AddonPack",
+  "description":"",
+  "version": "mc1.11.2-r1",
+  "mcversion": "1.11.2",
+  "url": "",
+  "updateUrl": "",
+  "authors": [ "Ferne"],
+  "credits": "Furia",
+  "logoFile": "",
+  "parent":"flammpfeil.slashblade",
+  "screenshots": [],
+  "requiredMods": [],
+  "dependencies": []
+}
+]
