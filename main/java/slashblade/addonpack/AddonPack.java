@@ -105,6 +105,8 @@ public class AddonPack
 		FrostWolf.registBlade();
 
 		Kamuy.registBlade();
+
+		Blue.registBlade();
 	}
 
 	/**
@@ -135,6 +137,8 @@ public class AddonPack
 		FrostWolf.registRecipe();
 
 		Kamuy.registRecipe();
+
+		Blue.registRecipe();
 		
 	}
 
@@ -166,6 +170,8 @@ public class AddonPack
 		FrostWolf.registAchievement();
 		
 		Kamuy.registAchievement();
+
+		Blue.registAchievement();
 	}
 
 	/**
@@ -173,18 +179,6 @@ public class AddonPack
 	 */
 	private void registEntity()
 	{
-/*		
-		EntityRegistry.registerModEntity(
-			new ResourceLocation(SlashBlade.modid, "PhantomSwordEx"),
-			EntityPhantomSwordEx.class,
-			"PhantomSwordEx",
-			2,
-			this,
-			250,
-			1,
-			true);
-*/
-
 		EntityRegistry.registerModEntity(
 			new ResourceLocation(SlashBlade.modid, "PhantomSwordEx"),
 			EntityPhantomSwordEx.class,

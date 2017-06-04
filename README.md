@@ -16,6 +16,7 @@ This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/sl
 * 聖幸刀「緑乃霧」 / Sacred-Green Mist-
 * 侍月刀「炎水薄斬」 / Crescent-Aqua Blaze-
 * 月光桜「吹雪一閃」 / MoonlightCherry-Storm Slash-
+* 利刀「蒼梅」 / Sharpness-Blue-
 * ヤミガラス / yamigarasu
 * ユキガラス / snowcrow
 * ケイコウトウ / FluorescentBar

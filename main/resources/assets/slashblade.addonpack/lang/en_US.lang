@@ -30,6 +30,8 @@ item.flammpfeil.slashblade.named.kamuy.water.name=Kamuy-WAKKA-
 item.flammpfeil.slashblade.named.kamuy.fire.name=Kamuy-APE-
 item.flammpfeil.slashblade.named.kamuy.lightning.name=Kamuy-KANNA-
 
+item.flammpfeil.slashblade.named.cs2.blue.name=Sharpness-Blue-
+
 flammpfeil.slashblade.specialattack.rapidphantomswords=Rapid Attack PhantomSwords
 flammpfeil.slashblade.specialattack.spiraledge=Spiral Edge
 flammpfeil.slashblade.specialattack.galephantomswords=Gale Storm PhantomSwords
@@ -124,3 +126,5 @@ achievement.flammpfeil.slashblade.kamuy.lightning=Kamuy-KANNA-
 achievement.flammpfeil.slashblade.kamuy.lightning.desc=§8§l§okanna kamuy within<br>lightning
 #achievement.flammpfeil.slashblade.kamuy.lightning.pos=26, 10
 achievement.flammpfeil.slashblade.kamuy.lightning.pos=18, 9
+
+achievement.flammpfeil.slashblade.cs2.blue=Sharpness-Blue-
