@@ -26,6 +26,7 @@ This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/sl
 * 神威刀「ワッカ」 / Kamuy-WAKKA-
 * 神威刀「アペ」 / Kamuy-APE-
 * 神威刀「カンナ」 / Kamuy-KANNA-
+* 無神「刃無し」 / kirisaya
 * 幻魔練金拵 / laemmle
 * 妖刀「似蛭」 / nihil
 * 血刀「似蛭」 / bloody nihil

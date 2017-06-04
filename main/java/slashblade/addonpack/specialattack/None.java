@@ -57,7 +57,7 @@ public class None extends SpecialAttackBase
 	 * @param player プレイヤ
 	 * @param num パーティクルの個数
 	 */
-	static void spawnParticle(EnumParticleTypes type, EntityPlayer player, int num, double rate)
+	public static void spawnParticle(EnumParticleTypes type, EntityPlayer player, int num, double rate)
 	{
 		// EntityBase.spawnExplodeParticle() とほぼ同じだが
 		// こっちは、Y座標が固定

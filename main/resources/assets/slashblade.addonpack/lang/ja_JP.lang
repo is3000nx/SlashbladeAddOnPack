@@ -31,6 +31,8 @@ item.flammpfeil.slashblade.named.kamuy.water.name=神威刀「ワッカ」
 item.flammpfeil.slashblade.named.kamuy.fire.name=神威刀「アペ」
 item.flammpfeil.slashblade.named.kamuy.lightning.name=神威刀「カンナ」
 
+item.flammpfeil.slashblade.named.kirisaya.name=無神「刃無し」
+
 item.flammpfeil.slashblade.named.cs2.blue.name=利刀「蒼梅」
 
 flammpfeil.slashblade.specialattack.rapidphantomswords=急襲幻影剣
@@ -92,5 +94,7 @@ achievement.flammpfeil.slashblade.kamuy.fire=神威刀「アペ」
 achievement.flammpfeil.slashblade.kamuy.fire.desc=§8§l§o火焔の神威宿す<br>山の踊り<br>キムンリムセ
 achievement.flammpfeil.slashblade.kamuy.lightning=神威刀「カンナ」
 achievement.flammpfeil.slashblade.kamuy.lightning.desc=§8§l§o雷電の神威宿す<br>天の矢<br>ニシコトロアイ
+
+achievement.flammpfeil.slashblade.kirisaya=無神「刃無し」
 
 achievement.flammpfeil.slashblade.cs2.blue=利刀「蒼梅」

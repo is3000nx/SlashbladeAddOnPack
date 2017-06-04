@@ -3,6 +3,8 @@ package slashblade.addonpack;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.event.LoadEvent;
+import mods.flammpfeil.slashblade.specialeffect.ISpecialEffect;
+import mods.flammpfeil.slashblade.specialeffect.SpecialEffects;
 import mods.flammpfeil.slashblade.util.SlashBladeAchievementCreateEvent;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -13,6 +15,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.oredict.RecipeSorter;
 import slashblade.addonpack.named.*;
 import slashblade.addonpack.specialattack.*;
+import slashblade.addonpack.specialeffect.*;
 import slashblade.addonpack.ability.*;
 import slashblade.addonpack.entity.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,7 +31,7 @@ public class AddonPack
 {
 	public static final String modname = "Slashblade-AddonPack";
 	public static final String modid = "slashblade.addonpack";
-	public static final String version = "mc1.11.2-r0";
+	public static final String version = "mc1.11.2-r1";
 
 	/**
 	 * 刀の登録名：「千鶴」村正
@@ -52,6 +55,8 @@ public class AddonPack
 	/** SAのID： ニシコトロアイ */
 	public static final int ID_LightningSwords = 38;
 
+	public static ISpecialEffect BurstDrive = SpecialEffects.register(new BurstDrive());
+	
 	/**
 	 * 最初の初期化処理.
 	 *
@@ -70,6 +75,11 @@ public class AddonPack
 							  RecipeSorter.Category.SHAPED,
 							  "after:forge:shaped");
 
+		RecipeSorter.register("flammpfeil.slashblade:kirisaya",
+							  RecipeKirisaya.class,
+							  RecipeSorter.Category.SHAPED,
+							  "after:forge:shaped");
+		
 		SlashBlade.InitEventBus.register(this);
 	}
 
@@ -106,6 +116,8 @@ public class AddonPack
 
 		Kamuy.registBlade();
 
+		Kirisaya.registBlade();
+
 		Blue.registBlade();
 	}
 
@@ -137,6 +149,8 @@ public class AddonPack
 		FrostWolf.registRecipe();
 
 		Kamuy.registRecipe();
+
+		Kirisaya.registRecipe();
 
 		Blue.registRecipe();
 		
@@ -170,6 +184,8 @@ public class AddonPack
 		FrostWolf.registAchievement();
 		
 		Kamuy.registAchievement();
+
+		Kirisaya.registAchievement();
 
 		Blue.registAchievement();
 	}

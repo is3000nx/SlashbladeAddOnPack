@@ -30,6 +30,8 @@ item.flammpfeil.slashblade.named.kamuy.water.name=Kamuy-WAKKA-
 item.flammpfeil.slashblade.named.kamuy.fire.name=Kamuy-APE-
 item.flammpfeil.slashblade.named.kamuy.lightning.name=Kamuy-KANNA-
 
+item.flammpfeil.slashblade.named.kirisaya.name=kirisaya
+
 item.flammpfeil.slashblade.named.cs2.blue.name=Sharpness-Blue-
 
 flammpfeil.slashblade.specialattack.rapidphantomswords=Rapid Attack PhantomSwords
@@ -127,4 +129,10 @@ achievement.flammpfeil.slashblade.kamuy.lightning.desc=§8§l§okanna kamuy with
 #achievement.flammpfeil.slashblade.kamuy.lightning.pos=26, 10
 achievement.flammpfeil.slashblade.kamuy.lightning.pos=18, 9
 
+achievement.flammpfeil.slashblade.kirisaya.pos=-15,8
+achievement.flammpfeil.slashblade.kirisaya=kirisaya
+achievement.flammpfeil.slashblade.kirisaya.desc=mistic mist
+
 achievement.flammpfeil.slashblade.cs2.blue=Sharpness-Blue-
+
+slashblade.seffect.name.BurstDrive=BurstDrive
