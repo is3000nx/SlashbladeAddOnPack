@@ -18,6 +18,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import slashblade.addonpack.entity.EntityFlareEdge;
+import slashblade.addonpack.util.Math2;
 
 /**
  * キムンリムセ
@@ -42,6 +43,9 @@ public class FlareSpiral extends SpecialAttackBase
 		return "flarespiral";
 	}
   
+	/**
+	 * SAの発動
+	 */
 	@Override
 	public void doSpacialAttack(ItemStack stack, EntityPlayer player)
 	{
@@ -83,36 +87,46 @@ public class FlareSpiral extends SpecialAttackBase
 				damage += ItemSlashBlade.AttackAmplifier.get(tag) * (0.25f + level / 5.0f);
 			}
       
-			final int maxCount = 5 + rank;
-			final double radBaseRot = Math.toRadians(player.rotationYaw);
-			final double radRot = 2.0*Math.PI / maxCount;
+			final int count = 5 + rank;
+			final float rotUnit = 360.0f / count;
 
-			for (int i = 0; i < maxCount; i++) {
+			for (int i = 0; i < count; i++) {
 				EntityFlareEdge entity = new EntityFlareEdge(world, player, damage);
-
-				double x = player.posX + Math.cos(radBaseRot + radRot*i);
-				double y = player.posY + 0.7*Math.sin(-Math.PI/3.0 + radRot*i);
-				double z = player.posZ + Math.sin(radBaseRot + radRot*i);
-				float yaw = player.rotationYaw +(float)Math.toDegrees(radRot*i);
-				float pitch = (float)(Math.cos(-Math.PI/3.0 + radRot*i));
-				if (pitch < 0.0f)
-					pitch = 1.0f;
-				else
-					pitch *= -30.0f;
-
-				entity.setLocationAndAngles(x, y, z, yaw, pitch);
-
-				entity.setColor(0xFF0000);
-				entity.setDriveVector(0.3F);
 				entity.setLifeTime(15);
-				entity.setIsMultiHit(false);
-				entity.setRoll(90.0f - 30.0f*(float)Math.cos(Math.PI/6 + radRot*i));
+
+				// プレイヤーを中心にぐるっと回るように配置。
+				// 向きは 上から見て右回りになる接線方向。
+				// （輪が広がるような動きになる）
+				// プレイヤー視点で左下から右上に切り上げるように見えるように
+				// y と pitch と roll を調整。
+
+				// ※ SpiralEdge と、同じ
+
+				final float rot = rotUnit*i;
+
+				float yaw = player.rotationYaw + rot;
+				float pitch = -30*Math2.cos(rot - 60);
+				if (pitch > 0.0f)
+					pitch = 1.0f;
+				
+				double x = Math2.cos(yaw);		// -sin(yaw - 90)
+				double y = 0.7*Math2.sin(rot - 60);
+				double z = Math2.sin(yaw);		//  cos(yaw - 90)
+				
+				entity.setInitialPosition(
+					player.posX + x,
+					player.posY + y + 0.5f,
+					player.posZ + z,
+					yaw,
+					pitch,
+					90.0f - 30.0f*Math2.cos(rot + 30),
+					0.3f);
+
 				world.spawnEntity(entity);
 			}
 		}
 
 		ItemSlashBlade.setComboSequence(tag, ItemSlashBlade.ComboSequence.Battou);
 
-		// ※ 上記処理 SpiralEdge と、ほぼ同じ
 	}
 }

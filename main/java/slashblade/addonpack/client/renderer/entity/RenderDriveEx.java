@@ -67,10 +67,14 @@ public class RenderDriveEx extends Render<EntityDriveEx>
 						  GL11.GL_LIGHTING_BIT |
 						  GL11.GL_COLOR_BUFFER_BIT);
 
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glDisable(GL11.GL_LIGHTING);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
+		
         float lifetime = entity.getLifeTime();
         float ticks = entity.ticksExisted;
         float alpha = (float)Math.pow((lifetime - Math.min(lifetime,ticks)) / lifetime, 2.0);
-		
 		
 		int color = entity.getColor();
 		GL11.glColor4f(((color >> 16) & 0xff)/255.0f,
@@ -81,7 +85,7 @@ public class RenderDriveEx extends Render<EntityDriveEx>
 
 
         GL11.glPushMatrix();
-        GL11.glTranslated(x, y + 0.5, z);
+        GL11.glTranslated(x, y, z);
         GL11.glRotatef(entity.rotationYaw,		0.0f, 1.0f, 0.0f);
         GL11.glRotatef(-entity.rotationPitch, 	1.0f, 0.0f, 0.0f);
         GL11.glRotatef(entity.getRoll(),		0.0f, 0.0f, 1.0f);

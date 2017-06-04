@@ -9,20 +9,19 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import slashblade.addonpack.specialattack.PhantomSwordsBase;
+import slashblade.addonpack.util.Math2;
 
+/**
+ * PhantomSword の拡張版.
+ *
+ * 固定値だったものをパラメータ化しただけだが、
+ * いくつか処理を見直し。
+ */
 public class EntityPhantomSwordEx extends EntityBase
 {
-	/**
-	 * 初期ヨー
-	 */
-    protected float iniYaw_ = Float.NaN;
-
-	/**
-	 * 初期ピッチ
-	 */
-    protected float iniPitch_ = Float.NaN;
-
 	/**
 	 * 刺さっているエンティティ
 	 */
@@ -34,9 +33,12 @@ public class EntityPhantomSwordEx extends EntityBase
     private double hitZ_;
     private float hitYaw_;
     private float hitPitch_;
+	private float hitBaseYaw_;	// 刺さった時の標的の向き
+
+	private PhantomSwordsBase sa_ = null;
 
 	/** 移動スピード */
-	private static final float SPEED = 1.75f;
+	public static final float SPEED = 1.75f;
 
 	/** 当たり判定の大きさ */
 	private static final double AMBIT = 0.75;
@@ -46,12 +48,6 @@ public class EntityPhantomSwordEx extends EntityBase
 	
 	/** パラメータ：移動開始までのインターバル */
     private static final DataParameter<Integer> INTERVAL = EntityDataManager.<Integer>createKey(EntityPhantomSwordEx.class, DataSerializers.VARINT);
-
-	/** パラメータ：初期ヨー */
-    private static final DataParameter<Float> INI_YAW = EntityDataManager.<Float>createKey(EntityPhantomSwordEx.class, DataSerializers.FLOAT);
-
-	/** パラメータ：初期ピッチ */
-    private static final DataParameter<Float> INI_PITCH = EntityDataManager.<Float>createKey(EntityPhantomSwordEx.class, DataSerializers.FLOAT);
 
     /**
      * コンストラクタ
@@ -69,46 +65,22 @@ public class EntityPhantomSwordEx extends EntityBase
 	 * @param worldIn ワールド
 	 * @param thrower 撃った人
 	 * @param attackLevel 攻撃レベル
+	 * @param sa このエンティティを発生させたSA (指定しない(null)場合もある)
 	 */
 	public EntityPhantomSwordEx(World worldIn,
 								EntityLivingBase thrower,
-								float attackLevel)
+								float attackLevel,
+								PhantomSwordsBase sa)
 	{
-		super(worldIn, thrower, attackLevel, 90.0f);
-		setInitialPosition();
-	}
-
-	/**
-	 * デフォルトでの初期表示位置
-	 */
-	private void setInitialPosition()
-	{
+		super(worldIn, thrower, attackLevel);
+		this.sa_ = sa;
         setSize(0.5f, 0.5f);
-
-		final float dist = 2.0f;
-
-		double r = (rand.nextDouble() - 0.5) * 2.0;
-
-		double yaw =  Math.toRadians(-thrower_.rotationYaw + 90.0);
-
-		double x = dist * r * Math.sin(yaw);
-		double y = dist * (1.0 - Math.abs(r));
-		double z = dist * r * Math.cos(yaw);
-
-		setLocationAndAngles(thrower_.posX + x,
-							 thrower_.posY + y,
-							 thrower_.posZ + z,
-							 thrower_.rotationYaw,
-							 thrower_.rotationPitch);
-
-		iniYaw_ = thrower_.rotationYaw;
-		iniPitch_ = thrower_.rotationPitch;
-
-		setDriveVector(true);
 	}
   
     /**
-     * エンティティの初期化処理
+     * エンティティの初期化処理.
+	 *
+	 * DataManager で管理する変数の登録処理
      */
 	@Override
 	protected void entityInit()
@@ -118,8 +90,6 @@ public class EntityPhantomSwordEx extends EntityBase
 		EntityDataManager manager = getDataManager();
         manager.register(TARGET_ENTITY_ID, 0);
 		manager.register(INTERVAL, 7);
-		manager.register(INI_YAW, 0.0f);
-		manager.register(INI_PITCH, -720.0f);
 	}
 
 	/**
@@ -139,7 +109,7 @@ public class EntityPhantomSwordEx extends EntityBase
     }
 	
 	/**
-	 * インターバル
+	 * 移動開始までのインターバル
 	 */
 	public final int getInterval()
 	{
@@ -147,43 +117,11 @@ public class EntityPhantomSwordEx extends EntityBase
 	}
   
 	/**
-	 * インターバル
+	 * 移動開始までのインターバル
 	 */
 	public final void setInterval(int value)
 	{
 		getDataManager().set(INTERVAL, value);
-	}
-
-	/**
-	 * 初期ヨー
-	 */
-	public final float getIniYaw()
-	{
-		return getDataManager().get(INI_YAW);
-	}
-  
-	/**
-	 * 初期ヨー
-	 */
-	public final void setIniYaw(float value)
-	{
-		getDataManager().set(INI_YAW, value);
-	}
-  
-	/**
-	 * 初期ピッチ
-	 */
-	public final float getIniPitch()
-	{
-		return getDataManager().get(INI_PITCH);
-	}
-  
-	/**
-	 * 初期ピッチ
-	 */
-	public final void setIniPitch(float value)
-	{
-		getDataManager().set(INI_PITCH, value);
 	}
 
 	/**
@@ -208,12 +146,6 @@ public class EntityPhantomSwordEx extends EntityBase
 				
 		return this.world.getEntityByID(targetid);
 	}
-
-    private void setDriveVector(boolean init)
-	{
-		setDriveVector(iniYaw_, iniPitch_, SPEED, init);
-	}
-	
 	
 	/**
 	 * 更新処理
@@ -243,12 +175,12 @@ public class EntityPhantomSwordEx extends EntityBase
 			attackToEntity(target);
 
 		} else if (!world.getCollisionBoxes(this, getEntityBoundingBox()).isEmpty()) {
-			// 障害物に当たった？
+			// 障害物に当たった
 			setDead();
 			return;
 		}
 
-		updatePosition();
+		move();
 
 		if (this.ticksExisted >= getLifeTime())
 			setDead();
@@ -271,9 +203,13 @@ public class EntityPhantomSwordEx extends EntityBase
 			return;
 		}
 
+		if (sa_ != null)
+			sa_.onSticking(entity);
+
 		updatePositionBaseStuckEntity();		
 
 		if (this.ticksExisted >= getLifeTime()) {
+			// 消滅する際に、もう1回ダメージを与える。
 			StylishRankManager.setNextAttackType(thrower_, StylishRankManager.AttackTypes.BreakPhantomSword);
 			onImpact(entity, attackLevel_*0.5f);
 			setDead();
@@ -287,23 +223,26 @@ public class EntityPhantomSwordEx extends EntityBase
 	{
 		final Entity entity = stuckEntity_;
 
-		double r = Math.toRadians(entity.rotationYaw);
-		double x = entity.posX + hitX_*Math.cos(r) - hitZ_*Math.sin(r);
+		float r = entity.rotationYaw - hitBaseYaw_;
+		double x = entity.posX + hitX_*Math2.cos(r) - hitZ_*Math2.sin(r);
 		double y = entity.posY + hitY_;
-		double z = entity.posZ + hitX_*Math.sin(r) + hitZ_*Math.cos(r);
-		// entity.pos* と hit* が Vec3dだったら、こんな↓感じ
-		// entityPos.add(HitPos.rotateYaw(Math.toRadians(-entity.rotationYaw)))
+		double z = entity.posZ + hitX_*Math2.sin(r) + hitZ_*Math2.cos(r);
 
 		float pitch = entity.rotationPitch + hitPitch_;
 		float yaw = entity.rotationYaw + hitYaw_;
 		
-		setLocationAndAngles(x, y, z, pitch % 360.0f, yaw % 360.0f);
+		setLocationAndAngles(x, y, z,
+							 MathHelper.wrapDegrees(yaw),
+							 MathHelper.wrapDegrees(pitch));
 	}
 
 	/**
 	 * 移動.
+	 *
+	 * 最初は、標的の方向へ向きを変えるだけ。
+	 * 一定時間経過後は、その方向へまっすぐ進む。
 	 */
-	private void updatePosition()
+	private void move()
 	{
 		this.lastTickPosX = this.posX;
 		this.lastTickPosY = this.posY;
@@ -320,7 +259,7 @@ public class EntityPhantomSwordEx extends EntityBase
 	}
 
 	/**
-	 * 標的に向きを向ける
+	 * 標的の方向へに向きを向ける
 	 */
 	private void doTargeting()
 	{
@@ -328,47 +267,34 @@ public class EntityPhantomSwordEx extends EntityBase
 		if (target == null)
 			return;
 
-		if (Float.isNaN(iniPitch_)) {
-			if (getIniPitch() < -700.0f) {
-				iniYaw_ = thrower_.rotationYaw;
-				iniPitch_ = thrower_.rotationPitch;
-			} else {
-				iniYaw_ = getIniYaw();
-				iniPitch_ = getIniPitch();
-			}
-		}
-		faceEntity(this, target, ticksExisted, ticksExisted);
-		setDriveVector(false);
-	}
-
-    private void faceEntity(Entity viewer, Entity target, float yawStep, float pitchStep)
-    {
-        double x = target.posX - viewer.posX;
-        double z = target.posZ - viewer.posZ;
-        double y = - (viewer.posY + viewer.getEyeHeight());
+        final double dx = target.posX - posX;
+        final double dz = target.posZ - posZ;
+        double dy = - posY;
 
         if (target instanceof EntityLivingBase) {
-            EntityLivingBase e = (EntityLivingBase)target;
-            y += e.posY + e.getEyeHeight();
+            dy += target.posY + target.getEyeHeight()/2;
         } else {
             AxisAlignedBB bb = target.getEntityBoundingBox();
-            y += (bb.minY + bb.maxY) / 2.0;
+            dy += (bb.minY + bb.maxY) / 2.0;
         }
 
-        double d3 = Math.sqrt(x * x + z * z);
-        float yaw = (float)Math.toDegrees(Math.atan2(z, x)) - 90.0f;
-		float pitch = -(float)Math.toDegrees(Math.atan2(y, d3));
+        double d = Math.sqrt(dx*dx + dz*dz);
+        float yaw   = (float)Math.toDegrees(Math.atan2(dx, dz));
+		float pitch = (float)Math.toDegrees(Math.atan2(dy, d));
 
-        iniPitch_ = updateRotation(iniPitch_, pitch, pitchStep);
-        iniYaw_   = updateRotation(iniYaw_, yaw, yawStep);
-    }
+		prevRotationYaw   = rotationYaw;
+		prevRotationPitch = rotationPitch;
+
+		rotationYaw   += MathHelper.clamp(yaw   - rotationYaw, -4.5f, 4.5f);
+		rotationPitch += MathHelper.clamp(pitch - rotationPitch, -4.5f, 4.5f);
+		// オリジナルでは
+		// 「初期方向から ticksExisted度以内 の方向転換」 となっていたが
+		// 「前回方向から 4.5度以内」と変えた。
+		// （方向転換の速度を調整しやすい）
+
+		setMotionToForward(SPEED);
+	}
 	
-    private float updateRotation(float par1, float par2, float par3)
-    {
-		return par2;
-//        return par1 + MathHelper.clamp(MathHelper.wrapDegrees(par2 - par1), -par3, par3);
-    }
-
 	/**
 	 * 攻撃.
 	 *
@@ -383,10 +309,12 @@ public class EntityPhantomSwordEx extends EntityBase
 	}
 
 	/**
-	 * 最も近くに居る敵を探す。
+	 * 当たり判定内にいる攻撃可能エンティティを取得する.
+	 *
+	 * 複数居る場合は、一番距離が近いもの
 	 *
 	 * @param bb 当たり判定
-	 * @return 近くの敵
+	 * @return 標的
 	 */
 	private Entity getNearestHitEntity(AxisAlignedBB bb)
 	{
@@ -430,10 +358,9 @@ public class EntityPhantomSwordEx extends EntityBase
 	protected boolean onImpact(Entity target, float damage)
 	{
 		if (super.onImpact(target, Math.max(1.0f, damage))) {
-			target.motionX = 0.0;
-			target.motionY = 0.0;
-			target.motionZ = 0.0;
-			target.addVelocity(0.0, 0.1, 0.0);
+			if (sa_ != null) {
+				sa_.onImpact(target);
+			}
 			return true;
 		}
 		return false;
@@ -453,6 +380,7 @@ public class EntityPhantomSwordEx extends EntityBase
 		hitX_		= this.posX - target.posX;
 		hitY_		= this.posY - target.posY;
 		hitZ_		= this.posZ - target.posZ;
+		hitBaseYaw_	= target.rotationYaw;
 
 		stuckEntity_ = target;
 

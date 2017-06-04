@@ -29,15 +29,19 @@ public class None extends SpecialAttackBase
 		return "none";
 	}
   
-
+	/**
+	 * SAの発動
+	 */
 	@Override
 	public void doSpacialAttack(ItemStack stack, EntityPlayer player)
 	{
 		NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(stack);
 		if (ItemSlashBlade.ProudSoul.tryAdd(tag, -COST, false)) {
+
 			spawnParticle(EnumParticleTypes.SPELL_WITCH, player, 20, 1.0);
 			StylishRankManager.setNextAttackType(player, AttackType);
 			StylishRankManager.doAttack(player);
+			// SAランクを上げるだけ
 
 		} else {
 			spawnParticle(EnumParticleTypes.SMOKE_LARGE, player, 20, 1.0);

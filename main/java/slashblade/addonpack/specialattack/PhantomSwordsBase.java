@@ -18,15 +18,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 /**
- * RapidPhantomSwords と GalePhantomSwords の共通部分
+ * PhantomSwordを召喚するSAの共通部分
  */
 abstract public class PhantomSwordsBase extends SpecialAttackBase
 {
-	abstract protected String getAttackType();
-	abstract protected void resetTargetMotion(Entity target);
-	abstract protected void spawnEntity(float damage, int count,
-										Entity target, EntityPlayer player);
-
 	/**
 	 * 使用コスト
 	 */
@@ -38,7 +33,7 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 	private static final int NO_COST_DAMAGE = 10;
 	
 	/**
-	 * SAの使用?
+	 * SAの発動
 	 */
 	@Override
 	public void doSpacialAttack(ItemStack stack, EntityPlayer player)
@@ -58,22 +53,9 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 			ItemSlashBlade.damageItem(stack, NO_COST_DAMAGE, player);
 
 		ItemSlashBlade blade = (ItemSlashBlade)stack.getItem();
-//		StylishRankManager.setNextAttackType(player, getAttackType());
-//		blade.attackTargetEntity(stack, target, player, true);
-//		player.onCriticalHit(target);
-//		resetTargetMotion(target);
-
-		// 弾を飛ばすタイプのSAなのに、
-		// 発動と同時にダメージが入るのはオカシイと思うので、
-		// 無効化
-		
-        
 		if (target instanceof EntityLivingBase) {
 			EntityLivingBase tmp = (EntityLivingBase)target;
 			blade.setDaunting(tmp);
-//			tmp.hurtTime = 0;
-//			tmp.hurtResistantTime = 0;
-					
 		}
 
 		int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
@@ -85,6 +67,9 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 
 	/**
 	 * 標的を取得する。
+	 *
+	 * 事前に設定してあれば、その標的。
+	 * なければ視線方向に居る敵。
 	 *
 	 * @param tag 刀の情報
 	 * @param player プレイヤー
@@ -102,10 +87,10 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 	}
 
 	/**
-	 * 視線方向にいる一番近い敵を取得する(?).
+	 * 視線方向にいる一番近い敵を取得する.
 	 *
 	 * @param player プレイヤー
-	 * @return 攻撃対象となる敵
+	 * @return 標的
 	 */
 	private Entity getEntityToWatch(EntityPlayer player)
 	{
@@ -140,4 +125,37 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 
 		return null;
 	}
+
+	// =====================================================
+	// 以下、必要に応じで書き換える
+
+	/**
+	 * 召喚したエンティティが標的に当たった時の追加処理.
+	 *
+	 * @param target 標的
+	 */
+	public void onImpact(Entity target)
+	{
+	}
+
+	/**
+	 * 召喚したエンティティが標的に刺さっている間の追加処理.
+	 *
+	 * @param target 標的
+	 */
+	public void onSticking(Entity target)
+	{
+	}
+
+	/**
+	 * エンティティを配置する。
+	 *
+	 * @param damage 当たった際に与えるダメージ
+	 * @param count 配置するエンティティの個数
+	 * @param target 標的
+	 * @param player プレイヤー
+	 */
+	abstract protected void spawnEntity(float damage, int count,
+										Entity target, EntityPlayer player);
+
 }

@@ -80,7 +80,7 @@ public class RenderPhantomSwordEx extends Render<EntityPhantomSwordEx>
 						(byte)((color      ) & 0xff));
 
         GL11.glPushMatrix();
-        GL11.glTranslated(x, y + 0.5, z);
+        GL11.glTranslated(x, y, z);
         GL11.glRotatef(entity.rotationYaw,		0.0f, 1.0f, 0.0f);
         GL11.glRotatef(-entity.rotationPitch, 	1.0f, 0.0f, 0.0f);
         GL11.glRotatef(entity.getRoll(),		0.0f, 0.0f, 1.0f);

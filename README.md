@@ -51,6 +51,8 @@ Arranged for 1.11.2 : [is3000nx](https://twitter.com/is3000nx)
 
 https://twitter.com/is3000nx
 
+In Japanese as possible, please.
+
 ## 注意 / Caution
 
 Slashblade-ExBlades とは相性が悪い気がします。

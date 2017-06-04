@@ -6,7 +6,6 @@ import java.util.Random;
 import mods.flammpfeil.slashblade.ability.StylishRankManager;
 import mods.flammpfeil.slashblade.entity.selector.EntitySelectorDestructable;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.util.ReflectionAccessHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IThrowableEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import slashblade.addonpack.util.Math2;
 
 /**
  * SAで発射されるエンティティの共通部分
@@ -38,7 +38,7 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 	/**
 	 * 撃った人
 	 */
-    protected EntityLivingBase thrower_;
+    protected EntityLivingBase thrower_ = null;
 
 	/**
 	 * 持ってた刀
@@ -74,6 +74,11 @@ abstract class EntityBase extends Entity implements IThrowableEntity
     public EntityBase(World worldIn)
     {
         super(worldIn);
+
+		// ※
+		// 自分では使わないけど、
+		// このコンストラクタを用意しておかないと、
+		// どこかの初期化処理でエラーになる。
     }
 
 	/**
@@ -82,12 +87,10 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 	 * @param worldIn ワールド
 	 * @param thrower 撃った人
 	 * @param attackLevel 攻撃レベル
-	 * @param roll エンティティのロール
 	 */
     public EntityBase(World worldIn,
 					  EntityLivingBase thrower,
-					  float attackLevel,
-					  float roll)
+					  float attackLevel)
 	{
         super(worldIn);
 
@@ -95,7 +98,6 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 
         this.thrower_ = thrower;
         this.attackLevel_ = attackLevel;
-        this.setRoll(roll);
 
         this.blade_ = thrower.getHeldItem(EnumHand.MAIN_HAND);
         if (!blade_.isEmpty() && !(blade_.getItem() instanceof ItemSlashBlade))
@@ -108,7 +110,9 @@ abstract class EntityBase extends Entity implements IThrowableEntity
     }
 
     /**
-     * エンティティの初期化処理
+     * エンティティの初期化処理.
+	 *
+	 * DataManager で管理する変数の登録処理
      */
     @Override
     protected void entityInit()
@@ -120,99 +124,58 @@ abstract class EntityBase extends Entity implements IThrowableEntity
     }
 
 	/**
-	 * ロール
+	 * エンティティの初期位置を設定する.
+	 *
+	 * エンティティのインスタンスを作成後は
+	 * 必ずコレで初期化すること。
+	 *
+	 * @param x 位置(X座標)
+	 * @param y 位置(Y座標)
+	 * @param z 位置(Z座標)
+	 * @param yaw 向き(ヨー)(単位：度)
+	 * @param pitch 向き(ピッチ)(単位：度)
+	 * @param roll 傾き(ロール)(単位：度)
+	 * @param speed 移動速度(移動方向はエンティティの向きと同じ)
 	 */
-    public final float getRoll()
+	public void setInitialPosition(double x, double y, double z,
+								   float yaw, float pitch, float roll,
+								   float speed)
 	{
-        return this.getDataManager().get(ROLL);
-    }
+        this.prevPosX = this.lastTickPosX = x;
+        this.prevPosY = this.lastTickPosY = y;
+        this.prevPosZ = this.lastTickPosZ = z;
 
-	/**
-	 * ロール
-	 */
-    public final void setRoll(float roll)
-	{
-        this.getDataManager().set(ROLL,roll);
-    }
+        this.prevRotationYaw   = this.rotationYaw   = MathHelper.wrapDegrees(-yaw);
+        this.prevRotationPitch = this.rotationPitch = MathHelper.wrapDegrees(-pitch);
+		setRoll(roll);
 
-	/**
-	 * 寿命
-	 */
-    public final int getLifeTime()
-	{
-        return this.getDataManager().get(LIFETIME);
-    }
+		setMotionToForward(speed);
 
-	/**
-	 * 寿命
-	 */
-    public final void setLifeTime(int lifetime)
-	{
-        this.getDataManager().set(LIFETIME,lifetime);
-    }
-
-	/**
-	 * 色
-	 */
-	public final int getColor()
-	{
-		return getDataManager().get(COLOR);
+		setPosition(x, y, z);
 	}
-  
-	/**
-	 * 色
-	 */
-	public final void setColor(int value)
-	{
-		getDataManager().set(COLOR, value);
-	}
-	
-	/**
-	 * 乱数
-	 */
-    public Random getRand()
-    {
-        return this.rand;
-    }
 
-	// -----------------------------------------------------
 
     /**
-     * エンティティの向きと移動速度を設定する。
+     * x,y,z軸それぞれの移動量を設定する。
 	 *
-     * @param yaw エンティティのヨー(度)
-	 * @param pitch エンティティのピッチ(度)
-	 * @param speed スピード
-	 * @param init trueなら1つ前のヨー/ピッチも設定する
+	 * 移動する方向は、エンティティの向いている方向。
+	 * そのため、事前に rotationYaw, rotationPitch は
+	 * 設定しておくこと。
+	 *
+	 * @param speed 移動スピード
      */
-    protected void setDriveVector(float yaw, float pitch,
-								  float speed, boolean init)
+    protected void setMotionToForward(float speed)
     {
-		yaw   = MathHelper.wrapDegrees(yaw);
-		pitch = MathHelper.wrapDegrees(pitch);
-
-        this.rotationYaw   = yaw;
-        this.rotationPitch = pitch;
-        if (init) {
-            this.prevRotationYaw = yaw;
-            this.prevRotationPitch = pitch;
-        }
-
-		// ----------------
-		// 以降 ラジアンの世界
-		yaw   = toRadians(yaw);
-		pitch = toRadians(pitch);
-
-        this.motionX = -MathHelper.sin(yaw) * MathHelper.cos(pitch) * speed;
-        this.motionY = -MathHelper.sin(pitch) * speed;
-        this.motionZ =  MathHelper.cos(yaw) * MathHelper.cos(pitch) * speed;
+        this.motionX = Math2.sin(rotationYaw)*Math2.cos(rotationPitch)*speed;
+        this.motionY = Math2.sin(rotationPitch)*speed;
+        this.motionZ = Math2.cos(rotationYaw)*Math2.cos(rotationPitch)*speed;
     }
 
 	/**
-	 * 攻撃が当たった処理.
+	 * 他エンティティに攻撃(?)が通った後の処理.
 	 *
-	 * @param target 当たった対象
-	 * @param damage 与えるダメージ
+	 * @param target 標的
+	 * @param damage ダメージ
 	 * @return true=刀を持って生体を攻撃した場合
 	 */
 	protected boolean onImpact(Entity target, float damage)
@@ -221,22 +184,33 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 	}
 
 	/**
-	 * 攻撃が当たった処理.
+	 * 他エンティティに攻撃(?)が通った後の処理.
 	 *
-	 * @param target 当たった対象
-	 * @param damage 与えるダメージ
-	 * @param source 攻撃手段
+	 * @param target 標的
+	 * @param damage ダメージ
+	 * @param source 攻撃方法
 	 * @return true=刀を持って生体を攻撃した場合
 	 */
 	protected boolean onImpact(Entity target, float damage, String source)
 	{
-		target.hurtResistantTime = 0;
-
 		DamageSource ds = new EntityDamageSource(source, thrower_)
 			.setDamageBypassesArmor()
 			.setMagicDamage();
-
 		
+		return onImpact(target, damage, ds);
+	}
+
+	/**
+	 * 他エンティティに攻撃(?)が通った後の処理.
+	 *
+	 * @param target 標的
+	 * @param damage ダメージ
+	 * @param ds 攻撃方法
+	 * @return true=刀を持って生体を攻撃した場合
+	 */
+	protected boolean onImpact(Entity target, float damage, DamageSource ds)
+	{
+		target.hurtResistantTime = 0;
 		target.attackEntityFrom(ds, damage);
 		
 		if (blade_.isEmpty() || !(target instanceof EntityLivingBase))
@@ -247,7 +221,7 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 								   thrower_);
 		return true;
 	}
-
+	
 	/**
 	 * 飛翔物の迎撃.
 	 *
@@ -327,7 +301,7 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 	}
 
 	/**
-	 * 指定物の周囲にパーティクルを発生させる.
+	 * 指定物の周囲に破壊のパーティクルを発生させる.
 	 *
 	 * @param entity 対象物
 	 */
@@ -358,17 +332,77 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 	 * Endermanを消極的にする.
 	 * @param entity 対象
 	 */
-	protected static void toPassiveEnderman(EntityEnderman entity)
+	protected static void coolDownEnderman(EntityEnderman entity)
 	{
 		entity.setAttackTarget(null);
 
 		for (EntityAITasks.EntityAITaskEntry task : entity.targetTasks.taskEntries) {
 			if (task.priority == 1) {
 				// プレイヤーのロックオンするためのAI.
+				// ※ MCのバージョンが変わったら、ココは要確認
 				task.action.resetTask();
 			}
 		}
 	}
+
+	// =====================================================
+	
+	/**
+	 * ロール
+	 */
+    public final float getRoll()
+	{
+        return this.getDataManager().get(ROLL);
+    }
+
+	/**
+	 * ロール
+	 */
+    public final void setRoll(float roll)
+	{
+        this.getDataManager().set(ROLL,roll);
+    }
+
+	/**
+	 * 寿命
+	 */
+    public final int getLifeTime()
+	{
+        return this.getDataManager().get(LIFETIME);
+    }
+
+	/**
+	 * 寿命
+	 */
+    public final void setLifeTime(int lifetime)
+	{
+        this.getDataManager().set(LIFETIME,lifetime);
+    }
+
+	/**
+	 * 色
+	 */
+	public final int getColor()
+	{
+		return getDataManager().get(COLOR);
+	}
+  
+	/**
+	 * 色
+	 */
+	public final void setColor(int value)
+	{
+		getDataManager().set(COLOR, value);
+	}
+	
+	/**
+	 * 乱数
+	 */
+    public Random getRand()
+    {
+        return this.rand;
+    }
+	
 
 	// =====================================================
 
@@ -561,15 +595,4 @@ abstract class EntityBase extends Entity implements IThrowableEntity
     }
 
 	// =====================================================
-
-	/**
-	 * 度 → ラジアン 変換
-	 * @param angdeg 度で表した角度
-	 * @return ラジアンで表した角度
-	 */
-	protected static float toRadians(float angdeg)
-	{
-		// Math.toRadians() のfloat版
-		return angdeg * (float)Math.PI / 180.0f;
-	}
 }

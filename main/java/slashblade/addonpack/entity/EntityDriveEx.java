@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 
 public class EntityDriveEx extends EntityBase
 {
-
 	/** 当たり判定の大きさ */
 	private static final double AMBIT = 1.5;
 	
@@ -36,34 +35,19 @@ public class EntityDriveEx extends EntityBase
 	 * @param worldIn ワールド
 	 * @param thrower 撃った人
 	 * @param attackLevel 攻撃レベル
-	 * @param multiHit true=多段Hit有り
-	 * @param roll エンティティのロール
 	 */
     public EntityDriveEx(World worldIn,
 						 EntityLivingBase thrower,
-						 float attackLevel,
-						 boolean multiHit,
-						 float roll)
+						 float attackLevel)
 	{
-		super(worldIn, thrower, attackLevel, roll);
-        setIsMultiHit(multiHit);
-
-		setInitialPosition();
-    }
-
-	/**
-	 * デフォルトでの初期表示位置
-	 */
-	private void setInitialPosition()
-	{
+		super(worldIn, thrower, attackLevel);
         setSize(1.0f, 2.0f);
-		setInitialSpeed(0.75f);
-
-		setPosition(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
     }
 
     /**
-     * エンティティの初期化処理
+     * エンティティの初期化処理.
+	 *
+	 * DataManager で管理する変数の登録処理
      */
     @Override
     protected void entityInit()
@@ -73,50 +57,53 @@ public class EntityDriveEx extends EntityBase
 		EntityDataManager manager = getDataManager();
         manager.register(IS_MULTI_HIT, false);
     }
-
+	
 	/**
 	 * 多段Hitの有無
 	 */
-    public boolean getIsMultiHit(){
+    public boolean isMultiHit(){
         return this.getDataManager().get(IS_MULTI_HIT);
     }
 	/**
 	 * 多段Hitの有無
 	 */
-    public void setIsMultiHit(boolean isMultiHit){
+    public void setMultiHit(boolean isMultiHit){
         this.getDataManager().set(IS_MULTI_HIT,isMultiHit);
     }
 
-    public void setDriveVector(float speed)
-	{
-		setDriveVector(rotationYaw, rotationPitch, speed, true);
-	}
-
-	public void setInitialSpeed(float speed)
-	{
-        setLocationAndAngles(thrower_.posX,
-							 thrower_.posY + getYOffset(),
-							 thrower_.posZ,
-							 thrower_.rotationYaw,
-							 thrower_.rotationPitch);
-
-        setDriveVector(speed);
-	}
-
+	/**
+	 * エンティティの更新処理.
+	 *
+	 * 移動したり当たり判定をしたり
+	 */
     @Override
     public void onUpdate()
     {
+		if (!world.isRemote)
+			detectCollision();
+
+		move();
+
+		if (this.ticksExisted >= getLifeTime())
+			setDead();
+	}
+
+	/**
+	 * 当たり判定
+	 */
+	private void detectCollision()
+	{
 		AxisAlignedBB bb = new AxisAlignedBB(this.posX - AMBIT,
 											 this.posY - AMBIT,
 											 this.posZ - AMBIT,
 											 this.posX + AMBIT,
 											 this.posY + AMBIT,
 											 this.posZ + AMBIT);
+		// ----- 射撃物の迎撃
+		intercept(bb, false);
 
-		intercept(bb, false);	// 射撃物の迎撃
-
-		final boolean isMultiHit = getIsMultiHit();
-		
+		// ----- 敵エンティティへの攻撃
+		final boolean isMultiHit = isMultiHit();
 		if (!isMultiHit || this.ticksExisted % 2 == 0) {
 
 			List<Entity> list = world.getEntitiesInAABBexcluding(thrower_, bb, EntitySelectorAttackable.getInstance());
@@ -136,22 +123,17 @@ public class EntityDriveEx extends EntityBase
 			}
 		}
 
-		if (!world.getCollisionBoxes(this, getEntityBoundingBox()).isEmpty()) {
-			// 障害物に当たった？
-			setDead();
-			return;
-		}
-
-		updatePosition();
-
-		if (this.ticksExisted >= getLifeTime())
+		// ----- 地面等の障害物との衝突
+		if (!world.getCollisionBoxes(this, getEntityBoundingBox()).isEmpty())
+			// 消滅
 			setDead();
 	}
+		
 
 	/**
 	 * 移動.
 	 */
-	private void updatePosition()
+	private void move()
 	{
 		this.lastTickPosX = this.posX;
 		this.lastTickPosY = this.posY;
@@ -169,5 +151,4 @@ public class EntityDriveEx extends EntityBase
     {
         return thrower_.getEyeHeight() * 0.5;
     }
-
 }

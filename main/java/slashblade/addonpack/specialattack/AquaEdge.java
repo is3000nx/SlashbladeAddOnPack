@@ -42,7 +42,9 @@ public class AquaEdge extends SpecialAttackBase
 		return "aquaedge";
 	}
   
-
+	/**
+	 * SAの発動
+	 */
 	@Override
 	public void doSpacialAttack(ItemStack stack, EntityPlayer player)
 	{
@@ -54,6 +56,7 @@ public class AquaEdge extends SpecialAttackBase
 		None.spawnParticle(EnumParticleTypes.WATER_SPLASH, player, 30, 2.0);
     
 		if (player.isBurning()) {
+			// 消火
 			player.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
 							 0.7f,
 							 1.2f + 0.8f*player.getRNG().nextFloat());
@@ -73,11 +76,17 @@ public class AquaEdge extends SpecialAttackBase
 				damage += ItemSlashBlade.AttackAmplifier.get(tag) * (0.5f + level / 5.0f);
 			}
 
-			EntityAquaEdge entity = new EntityAquaEdge(world, player, damage, MULTI_HIT, 90.0f - ItemSlashBlade.ComboSequence.Iai.swingDirection);
-			entity.setColor(0x0000FF);
-			entity.setInitialSpeed(SPEED);
+			EntityAquaEdge entity = new EntityAquaEdge(world, player, damage);
 			entity.setLifeTime(LIFE_TIME);
-
+			entity.setInitialPosition(
+				player.posX,
+				player.posY + entity.getYOffset(),
+				player.posZ,
+				player.rotationYaw,
+				player.rotationPitch,
+				90.0f - ItemSlashBlade.ComboSequence.Iai.swingDirection,
+				SPEED);
+			
 			world.spawnEntity(entity);
 		}
     

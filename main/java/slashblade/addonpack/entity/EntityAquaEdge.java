@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -27,35 +28,73 @@ public class EntityAquaEdge extends EntityDriveEx
 	 * @param worldIn ワールド
 	 * @param thrower 撃った人
 	 * @param attackLevel 攻撃レベル
-	 * @param multiHit true=多段Hit有り
-	 * @param roll エンティティのロール
 	 */
     public EntityAquaEdge(World worldIn,
 						  EntityLivingBase thrower,
-						  float attackLevel,
-						  boolean multiHit,
-						  float roll)
+						  float attackLevel)
 	{
-		super(worldIn, thrower, attackLevel, multiHit, roll);
+		super(worldIn, thrower, attackLevel);
+
+		setMultiHit(true);
+		setColor(0x0000FF);
 	}
 
 	/**
-	 * 攻撃が当たった処理.
+	 * エンティティの初期位置を設定する.
 	 *
-	 * @param target 当たった対象
-	 * @param damage 与えるダメージ
-	 * @param source 攻撃手段
+	 * エンティティのインスタンスを作成後は
+	 * 必ずコレで初期化すること。
+	 *
+	 * @param x 位置(X座標)
+	 * @param y 位置(Y座標)
+	 * @param z 位置(Z座標)
+	 * @param yaw 向き(ヨー)(単位：度)
+	 * @param pitch 向き(ピッチ)(単位：度)
+	 * @param roll 傾き(ロール)(単位：度)
+	 * @param speed 移動速度(移動方向はエンティティの向きと同じ)
+	 */
+	@Override
+	public void setInitialPosition(double x, double y, double z,
+								   float yaw, float pitch, float roll,
+								   float speed)
+	{
+		super.setInitialPosition(x, y, z, yaw, pitch, roll, speed);
+
+		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
+	}
+	
+	/**
+	 * 他エンティティに攻撃(?)が通った後の処理.
+	 *
+	 * @param target 標的
+	 * @param damage ダメージ
 	 * @return true=刀を持って生体を攻撃した場合
 	 */
 	@Override
-	protected boolean onImpact(Entity target, float damage, String source)
+	protected boolean onImpact(Entity target, float damage)
 	{
-		EnderTeleportCanceller.setTeleportCancel(target, 100);
-    
+		return onImpact(target, damage, "drown");
+	}
+
+	/**
+	 * 他エンティティに攻撃(?)が通った後の処理.
+	 *
+	 * ダメージを与えた後、
+	 * 標的を水中にいる扱いにする、
+	 * 燃えている場合は消火、
+	 * 標的がエンダーマンなら、テレポートキャンセル＆消極化
+	 *
+	 * @param target 標的
+	 * @param damage ダメージ
+	 * @param ds 攻撃方法
+	 * @return true=刀を持って生体を攻撃した場合
+	 */
+	@Override
+	protected boolean onImpact(Entity target, float damage, DamageSource ds)
+	{
 		spawnParticle(target);
 
-		if (!target.world.isRemote)
-			super.onImpact(target, damage, "drown");
+		super.onImpact(target, damage, ds);
     
 		ReflectionHelper.setPrivateValue(Entity.class,
 										 target,
@@ -84,8 +123,10 @@ public class EntityAquaEdge extends EntityDriveEx
 			}
 		}
     
-		if (target instanceof EntityEnderman)
-			toPassiveEnderman((EntityEnderman)target);
+		if (target instanceof EntityEnderman) {
+			EnderTeleportCanceller.setTeleportCancel(target, 100);
+			coolDownEnderman((EntityEnderman)target);
+		}
 
 		return false;	// 使わないから、どっちを返しても良い。
 	}

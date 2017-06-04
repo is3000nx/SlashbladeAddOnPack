@@ -41,7 +41,7 @@ public class SpiralEdge	extends SpecialAttackBase
 	}
 
 	/**
-	 * SAの使用?
+	 * SAの発動
 	 */
 	@Override
 	public void doSpacialAttack(ItemStack stack, EntityPlayer player)
@@ -56,7 +56,6 @@ public class SpiralEdge	extends SpecialAttackBase
 		NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(stack);
 		if (!ItemSlashBlade.ProudSoul.tryAdd(tag, -COST, false))
 			ItemSlashBlade.damageItem(stack, NO_COST_DAMAGE, player);
-//			stack.damageItem(NO_COST_DAMAGE, player);
       
 		ItemSlashBlade blade = (ItemSlashBlade)stack.getItem();
 
@@ -104,6 +103,7 @@ public class SpiralEdge	extends SpecialAttackBase
 			entity.setLifeTime(15);
 			entity.setIsMultiHit(false);
 			entity.setRoll(90.0f - 30.0f*(float)Math.cos(Math.PI/6 + radRot*i));
+
 			world.spawnEntity(entity);
 		}
 
