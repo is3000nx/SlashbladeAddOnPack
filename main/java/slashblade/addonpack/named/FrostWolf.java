@@ -112,7 +112,7 @@ public class FrostWolf
 									 " IL",
 									 "CS ",
 									 "BQ ",
-									 'L', new ItemStack(Items.DYE, 4),	// "dyeBlack"
+									 'L', Items.DYE,	// "dyeBlack"
 									 'S', sphere,
 									 'B', required,
 									 'Q', Items.QUARTZ,
