@@ -34,6 +34,9 @@ item.flammpfeil.slashblade.named.kirisaya.name=kirisaya
 
 item.flammpfeil.slashblade.named.cs2.blue.name=Sharpness-Blue-
 
+item.flammpfeil.slashblade.named.Wa.katana.name=katana
+item.flammpfeil.slashblade.named.Wa.tachi.name=tachi
+
 flammpfeil.slashblade.specialattack.rapidphantomswords=Rapid Attack PhantomSwords
 flammpfeil.slashblade.specialattack.spiraledge=Spiral Edge
 flammpfeil.slashblade.specialattack.galephantomswords=Gale Storm PhantomSwords
@@ -135,4 +138,8 @@ achievement.flammpfeil.slashblade.kirisaya.desc=mistic mist
 
 achievement.flammpfeil.slashblade.cs2.blue=Sharpness-Blue-
 
+achievement.flammpfeil.slashblade.Wa.katana=katana
+achievement.flammpfeil.slashblade.Wa.tachi=tachi
+
 slashblade.seffect.name.BurstDrive=BurstDrive
+

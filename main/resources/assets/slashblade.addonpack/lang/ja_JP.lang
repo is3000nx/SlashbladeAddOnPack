@@ -35,6 +35,9 @@ item.flammpfeil.slashblade.named.kirisaya.name=無神「刃無し」
 
 item.flammpfeil.slashblade.named.cs2.blue.name=利刀「蒼梅」
 
+item.flammpfeil.slashblade.named.Wa.katana.name=刀
+item.flammpfeil.slashblade.named.Wa.tachi.name=太刀
+
 flammpfeil.slashblade.specialattack.rapidphantomswords=急襲幻影剣
 flammpfeil.slashblade.specialattack.spiraledge=旋刃
 flammpfeil.slashblade.specialattack.galephantomswords=烈風幻影剣
@@ -98,3 +101,6 @@ achievement.flammpfeil.slashblade.kamuy.lightning.desc=§8§l§o雷電の神威�
 achievement.flammpfeil.slashblade.kirisaya=無神「刃無し」
 
 achievement.flammpfeil.slashblade.cs2.blue=利刀「蒼梅」
+
+achievement.flammpfeil.slashblade.Wa.katana=刀
+achievement.flammpfeil.slashblade.Wa.tachi=太刀

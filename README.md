@@ -1,7 +1,7 @@
 SlashBlade Add-on Pack
 ====
 
-[Minecraft](https://minecraft.net/ "Minecraft") の Mod 『[SlashBlade](https://minecraft.curseforge.com/projects/slashblade "SlashBlade")』の追加刀剣を、1.11.2に対応して１つにまとめました。
+[Minecraft](https://minecraft.net/ "Minecraft") の Mod 『[抜刀剣 / SlashBlade](https://minecraft.curseforge.com/projects/slashblade "SlashBlade")』の追加刀剣を、1.11.2に対応して１つにまとめました。
 
 This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/slashblade "SlashBlade")" MOD.
 
@@ -45,6 +45,9 @@ Copy to ``mods`` folder.
 * 風来の劒 / Blade of Wanderer
 * 結月刀「付喪-改」 / yukari
 * 型月刀「空の境界」 / Knife Of BE
+
+* 刀 / katana
+* 太刀 / tachi
 
 ## ライセンス / Licence
 

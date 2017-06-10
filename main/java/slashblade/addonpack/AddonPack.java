@@ -31,7 +31,7 @@ public class AddonPack
 {
 	public static final String modname = "Slashblade-AddonPack";
 	public static final String modid = "slashblade.addonpack";
-	public static final String version = "mc1.11.2-r1";
+	public static final String version = "mc1.11.2-r2";
 
 	/**
 	 * 刀の登録名：「千鶴」村正
@@ -79,6 +79,16 @@ public class AddonPack
 							  RecipeKirisaya.class,
 							  RecipeSorter.Category.SHAPED,
 							  "after:forge:shaped");
+
+		RecipeSorter.register("flammpfeil.slashblade:wa:katana",
+							  RecipeWa.class,
+							  RecipeSorter.Category.SHAPED,
+							  "after:forge:shaped");
+
+		RecipeSorter.register("flammpfeil.slashblade:wa:tachi",
+							  RecipeWa.class,
+							  RecipeSorter.Category.SHAPED,
+							  "after:forge:shaped");
 		
 		SlashBlade.InitEventBus.register(this);
 	}
@@ -119,6 +129,8 @@ public class AddonPack
 		Kirisaya.registBlade();
 
 		Blue.registBlade();
+
+		Wa.registBlade();
 	}
 
 	/**
@@ -153,7 +165,8 @@ public class AddonPack
 		Kirisaya.registRecipe();
 
 		Blue.registRecipe();
-		
+
+		Wa.registRecipe();
 	}
 
 	/**
@@ -188,6 +201,8 @@ public class AddonPack
 		Kirisaya.registAchievement();
 
 		Blue.registAchievement();
+
+		Wa.registAchievement();
 	}
 
 	/**
