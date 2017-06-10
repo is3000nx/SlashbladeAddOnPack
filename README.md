@@ -11,6 +11,14 @@ This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/sl
 * Minefraft Forge 1.11.2-13.20.0.2228
 * SlashBlade-mc1.11-r9
 
+## インストール / 
+
+1. [リリースページ](https://github.com/is3000nx/SlashbladeAddOnPack/releases)からファイルをダウンロード
+2. jarファイルを ``mods`` フォルダにコピーする。
+
+1. Download from [the releases page](https://github.com/is3000nx/SlashbladeAddOnPack/releases).
+2. Copy to ``mods`` folder.
+
 ## 追加刀剣 / Blade
 
 * 聖幸刀「緑乃霧」 / Sacred-Green Mist-
@@ -60,3 +68,7 @@ In Japanese as possible, please.
 Slashblade-ExBlades とは相性が悪い気がします。
 
 Use with "Slashblade-ExBlades" is not recommended.
+
+## 姉妹品 / Relations
+
+* [Slashblade Add-on "AlternativeRecipe"](https://github.com/is3000nx/AlternativeRecipe)
