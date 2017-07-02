@@ -73,22 +73,22 @@ public class AddonPack
 		RecipeSorter.register("flammpfeil.slashblade:nihil:extra",
 							  RecipeExtraNihilBlade.class,
 							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shaped");
+							  "after:forge:shapedore");
 
 		RecipeSorter.register("flammpfeil.slashblade:kirisaya",
 							  RecipeKirisaya.class,
 							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shaped");
+							  "after:forge:shapedore");
 
 		RecipeSorter.register("flammpfeil.slashblade:wa:katana",
 							  RecipeWa.class,
 							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shaped");
+							  "after:forge:shapedore");
 
 		RecipeSorter.register("flammpfeil.slashblade:wa:tachi",
 							  RecipeWa.class,
 							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shaped");
+							  "after:forge:shapedore");
 		
 		SlashBlade.InitEventBus.register(this);
 	}
