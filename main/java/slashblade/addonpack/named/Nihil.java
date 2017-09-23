@@ -4,13 +4,11 @@ import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 
 /**
  * 「似蛭」系の五振り
@@ -362,56 +360,5 @@ public class Nihil
 	 */
 	public static void registAchievement()
 	{
-		// ===== 妖刀「似蛭」 =====
-		{
-			String NAME = NAME_NIHIL;
-			String KEY = KEY_NIHIL;
-
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 血刀「似蛭」 =====
-		{
-			String NAME = NAME_EX;
-			String KEY = KEY_EX;
-
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 獄刀「似蛭」 =====
-		{
-			String NAME = NAME_UL;
-			String KEY = KEY_UL;
-		
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 妖刀「紅桜」 =====
-		{
-			String NAME = NAME_CC;
-			String KEY = KEY_CC;
-
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 煉獄刀「死念」 =====
-		{
-			String NAME = NAME_BX;
-			String KEY = KEY_BX;
-
-			Achievement parent = AchievementList.getAchievement(KEY_UL);
-			
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, parent);
-			AchievementList.setContent(achievement, KEY);
-		}
 	}
 }

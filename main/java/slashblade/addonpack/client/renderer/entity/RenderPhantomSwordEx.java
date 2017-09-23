@@ -1,7 +1,7 @@
 package slashblade.addonpack.client.renderer.entity;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -89,7 +89,7 @@ public class RenderPhantomSwordEx extends Render<EntityPhantomSwordEx>
         GL11.glScalef(scale * 0.5f, scale * 0.5f, scale);
 
         Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer wr = tessellator.getBuffer();
+        BufferBuilder wr = tessellator.getBuffer();
 
         wr.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION);
 

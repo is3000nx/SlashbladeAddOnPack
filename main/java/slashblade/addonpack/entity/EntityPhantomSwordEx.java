@@ -325,7 +325,7 @@ public class EntityPhantomSwordEx extends EntityBase
 		Entity target = getTargetEntity();
 		if (target != null &&
 			target.isEntityAlive() &&
-			target.getEntityBoundingBox().intersectsWith(bb)) {
+			target.getEntityBoundingBox().intersects(bb)) {
 
 			list.add(target);
 		}

@@ -5,12 +5,10 @@ import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.Tukumo;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.oredict.OreDictionary;
 
 /**
@@ -88,8 +86,5 @@ public class Yukari
 	 */
 	public static void registAchievement()
 	{
-		ItemStack blade = SlashBlade.getCustomBlade(NAME);
-		Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-		AchievementList.setContent(achievement, KEY);
 	}
 }

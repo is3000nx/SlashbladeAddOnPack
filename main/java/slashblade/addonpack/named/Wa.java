@@ -5,8 +5,6 @@ import mods.flammpfeil.slashblade.SlashBlade;
 import net.minecraft.nbt.NBTTagCompound;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import net.minecraft.init.Items;
-import mods.flammpfeil.slashblade.stats.AchievementList;
-import net.minecraft.stats.Achievement;
 
 /**
  * 和風MOD連携の「刀」「太刀」
@@ -94,23 +92,6 @@ public class Wa
 	 */
 	public static void registAchievement()
 	{
-		{
-			String NAME = NAME_A;
-			String KEY = KEY_A;
-			
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		{
-			String NAME = NAME_B;
-			String KEY = KEY_B;
-			
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
 	}
 
 	/**

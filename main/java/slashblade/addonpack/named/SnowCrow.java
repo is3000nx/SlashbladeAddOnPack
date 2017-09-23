@@ -5,13 +5,11 @@ import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.Doutanuki;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 
 /**
  * ユキガラス
@@ -73,8 +71,5 @@ public class SnowCrow
 	 */
 	public static void registAchievement()
 	{
-		ItemStack blade = SlashBlade.getCustomBlade(NAME);
-		Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, net.minecraft.stats.AchievementList.KILL_ENEMY);
-		AchievementList.setContent(achievement, KEY);
 	}
 }

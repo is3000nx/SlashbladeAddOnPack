@@ -4,11 +4,9 @@ import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -81,8 +79,5 @@ public class KnifeOfBE
 	 */
 	public static void registAchievement()
 	{
-		ItemStack blade = SlashBlade.getCustomBlade(NAME);
-		Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-		AchievementList.setContent(achievement, KEY);
 	}
 }

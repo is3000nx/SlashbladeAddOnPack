@@ -2,7 +2,7 @@ package slashblade.addonpack.client.renderer.entity;
 
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -92,7 +92,7 @@ public class RenderDriveEx extends Render<EntityDriveEx>
         GL11.glScalef(0.25f, 1, 1);
 
         Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer wr = tessellator.getBuffer();
+        BufferBuilder wr = tessellator.getBuffer();
 
         wr.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
 

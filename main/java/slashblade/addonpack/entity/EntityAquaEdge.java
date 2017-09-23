@@ -111,8 +111,7 @@ public class EntityAquaEdge extends EntityDriveEx
 			try {
 				ReflectionHelper.findMethod(
 					Entity.class,
-					target,
-					new String[]{"setFlag"},
+					"setFlag", "func_70052_a",
 					int.class, boolean.class).invoke(target, 0, false);
 			} catch (IllegalAccessException ex) {
 				throw new RuntimeException(ex);

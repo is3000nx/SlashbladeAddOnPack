@@ -56,10 +56,13 @@ public class Toyako
 	 */
 	public static void registRecipe()
 	{
-		VillagerProfession prof = new VillagerProfession(
-			SlashBlade.modid + ":smith",
-			"minecraft:textures/entity/villager/smith.png",
-			"minecraft:textures/entity/zombie_villager/zombie_smith.png");
+//		VillagerProfession prof = new VillagerProfession(
+//			SlashBlade.modid + ":smith",
+//			"minecraft:textures/entity/villager/smith.png",
+//			"minecraft:textures/entity/zombie_villager/zombie_smith.png");
+
+		VillagerProfession prof = VillagerRegistry.getById(3);
+		//                                         ↑@Deprecated
 
 		VillagerCareer career = new VillagerCareer(prof, "weapon");
 		career
@@ -78,7 +81,7 @@ public class Toyako
 		// net.minecraft.entity.passive.EntityVillagerの
 		// DEFAULT_TRADE_LIST_MAP を参考。
 		
-		VillagerRegistry.instance().register(prof);
+//		VillagerRegistry.instance().register(prof);
 	}
 
 	/**

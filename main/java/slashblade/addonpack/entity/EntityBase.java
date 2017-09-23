@@ -483,13 +483,13 @@ abstract class EntityBase extends Entity implements IThrowableEntity
      */
     @SideOnly(Side.CLIENT)
     @Override
-    public int getBrightnessForRender(float partialTicks)
+    public int getBrightnessForRender()
     {
 		// EntityXPOrb.getBrightnessForRender と同じ処理
 
         float f1 = 0.5f;
 
-        int i = super.getBrightnessForRender(partialTicks);
+        int i = super.getBrightnessForRender();
         int j = i & 255;
         int k = i >> 16 & 255;
         j += (int)(f1 * 15.0f * 16.0f);
@@ -504,11 +504,11 @@ abstract class EntityBase extends Entity implements IThrowableEntity
      * エンティティの明るさ
      */
     @Override
-    public float getBrightness(float partialTicks)
+    public float getBrightness()
     {
 		// EntityPortalFX と同じらしいが？
 		
-        float f1 = super.getBrightness(partialTicks);
+        float f1 = super.getBrightness();
 
         float f2 = 0.9f;
         f2 = f2 * f2 * f2 * f2;

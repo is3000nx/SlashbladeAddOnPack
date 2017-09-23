@@ -5,14 +5,12 @@ import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.Tukumo;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.oredict.OreDictionary;
 import static slashblade.addonpack.AddonPack.NAME_TIZURU;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
@@ -244,34 +242,5 @@ public class BladeMaster
 	 */
 	public static void registAchievement()
 	{
-		// ===== 聖幸刀「緑乃霧」 =====
-		{
-			String NAME = NAME_GREEN;
-			String KEY = KEY_GREEN;
-
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 侍月刀「炎水薄斬」 =====
-		{
-			String NAME = NAME_AQUA;
-			String KEY = KEY_AQUA;
-
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 月光桜「吹雪一閃」 =====
-		{
-			String NAME = NAME_MOON;
-			String KEY = KEY_MOON;
-
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
 	}
 }

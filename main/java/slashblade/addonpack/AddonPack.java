@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.oredict.RecipeSorter;
 import slashblade.addonpack.named.*;
 import slashblade.addonpack.specialattack.*;
 import slashblade.addonpack.specialeffect.*;
@@ -31,7 +30,9 @@ public class AddonPack
 {
 	public static final String modname = "Slashblade-AddonPack";
 	public static final String modid = "slashblade.addonpack";
-	public static final String version = "mc1.11.2-r2";
+	public static final String version = "mc1.12.1-r3";
+
+	public static final ResourceLocation RecipeGroup = new ResourceLocation(SlashBlade.modid,"addon_pack");
 
 	/**
 	 * 刀の登録名：「千鶴」村正
@@ -69,26 +70,6 @@ public class AddonPack
 		registSpecialEffect();
 		
 		InitProxy.proxy.initializeItemRenderer();
-
-		RecipeSorter.register("flammpfeil.slashblade:nihil:extra",
-							  RecipeExtraNihilBlade.class,
-							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shapedore");
-
-		RecipeSorter.register("flammpfeil.slashblade:kirisaya",
-							  RecipeKirisaya.class,
-							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shapedore");
-
-		RecipeSorter.register("flammpfeil.slashblade:wa:katana",
-							  RecipeWa.class,
-							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shapedore");
-
-		RecipeSorter.register("flammpfeil.slashblade:wa:tachi",
-							  RecipeWa.class,
-							  RecipeSorter.Category.SHAPED,
-							  "after:forge:shapedore");
 		
 		SlashBlade.InitEventBus.register(this);
 	}

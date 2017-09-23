@@ -3,14 +3,12 @@ package slashblade.addonpack.named;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 /**
@@ -60,6 +58,7 @@ public class FluorescentBar
 
 		SlashBlade.addRecipe(KEY,
 							 new ShapedOreRecipe(
+								 AddonPack.RecipeGroup,
 								 target,
 								 " PS",
 								 "PGP",
@@ -75,8 +74,5 @@ public class FluorescentBar
 	 */
 	public static void registAchievement()
 	{
-		ItemStack blade = SlashBlade.getCustomBlade(NAME);
-		Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-		AchievementList.setContent(achievement, KEY);
 	}
 }

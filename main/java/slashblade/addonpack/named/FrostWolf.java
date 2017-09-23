@@ -5,14 +5,12 @@ import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.oredict.OreDictionary;
 import static slashblade.addonpack.AddonPack.NAME_TIZURU;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
@@ -157,24 +155,5 @@ public class FrostWolf
 	 */
 	public static void registAchievement()
 	{
-		// ===== 凍桜刃「雪花蒼月」 =====
-		{
-			String NAME = NAME_A;
-			String KEY = KEY_A;
-			
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
-
-		// ===== 明獣刃「陽牙氷狼」 =====
-		{
-			String NAME = NAME_B;
-			String KEY = KEY_B;
-			
-			ItemStack blade = SlashBlade.getCustomBlade(NAME);
-			Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, null);
-			AchievementList.setContent(achievement, KEY);
-		}
 	}
 }

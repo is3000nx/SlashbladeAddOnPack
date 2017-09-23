@@ -4,13 +4,11 @@ import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.specialeffect.SpecialEffects;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import slashblade.addonpack.AddonPack;
 
 /**
@@ -92,10 +90,5 @@ public class Kirisaya
 	 */
 	public static void registAchievement()
 	{
-		Achievement parent = net.minecraft.stats.AchievementList.KILL_ENEMY;
-
-		ItemStack blade = SlashBlade.getCustomBlade(NAME);
-		Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, parent);
-		AchievementList.setContent(achievement, KEY);
 	}
 }

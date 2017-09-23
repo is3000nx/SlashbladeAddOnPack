@@ -21,6 +21,7 @@ public class RecipeWa extends ShapedOreRecipe
     public RecipeWa(String name, String texture, Object... recipe)
 	{
         super(
+			AddonPack.RecipeGroup,
 			SlashBlade.findItemStack(SlashBlade.modid, name, 1),
 			recipe);
 

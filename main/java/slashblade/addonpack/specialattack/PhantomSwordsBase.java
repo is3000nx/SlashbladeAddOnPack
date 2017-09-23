@@ -102,9 +102,9 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 		Vec3d vec = player.getLookVec().normalize();
 		
 		for (int dist = 2; dist < 20; dist += 2) {
-			AxisAlignedBB temp = bb.offset(vec.xCoord * dist,
-										   vec.yCoord * dist,
-										   vec.zCoord * dist);
+			AxisAlignedBB temp = bb.offset(vec.x * dist,
+										   vec.y * dist,
+										   vec.z * dist);
       
 			List<Entity> list = world.getEntitiesInAABBexcluding(player, temp, selector);
 

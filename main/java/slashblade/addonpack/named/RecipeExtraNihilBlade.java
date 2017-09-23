@@ -10,7 +10,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
@@ -80,7 +79,7 @@ public class RecipeExtraNihilBlade
 								 boolean remainedBladeSub,
 								 Object... recipe)
 	{
-		super(result, recipe);
+		super(AddonPack.RecipeGroup, result, recipe);
 		
 		this.requiredBladeMain = requiredBladeMain;
 		this.posXMain = posXMain;
@@ -246,7 +245,7 @@ public class RecipeExtraNihilBlade
 				boolean canApplyFlag = enchantment.canApply(result);
 				if(canApplyFlag){
 					for(Enchantment curEnchantIndex : newItemEnchants.keySet()){
-						if (curEnchantIndex != enchantIndex && !enchantment.func_191560_c(curEnchantIndex) /*canApplyTogether*/)
+						if (curEnchantIndex != enchantIndex && !enchantment.canApplyTogether(curEnchantIndex))
 						{
 							canApplyFlag = false;
 							break;

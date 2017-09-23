@@ -4,14 +4,12 @@ import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.event.DropEventHandler;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.stats.AchievementList;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.common.Loader;
@@ -92,6 +90,7 @@ public class DarkRaven
 
 		SlashBlade.addRecipe(KEY,
 							 new ShapedOreRecipe(
+								 AddonPack.RecipeGroup,
 								 target,
 								 "   ",
 								 " E ",
@@ -123,9 +122,5 @@ public class DarkRaven
 	 */
 	public static void registAchievement()
 	{
-		ItemStack blade = SlashBlade.getCustomBlade(NAME);
-		Achievement achievement = AchievementList.registerCraftingAchievement(KEY, blade, net.minecraft.stats.AchievementList.KILL_ENEMY);
-		AchievementList.setContent(achievement, KEY);
-
 	}
 }
