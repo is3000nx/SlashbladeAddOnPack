@@ -1,13 +1,17 @@
 SlashBlade Add-on Pack
 ====
 
-[Minecraft](https://minecraft.net/ "Minecraft") の Mod 『[抜刀剣 / SlashBlade](https://minecraft.curseforge.com/projects/slashblade "SlashBlade")』の追加刀剣を、1.11.2に対応して１つにまとめました。
+[Minecraft](https://minecraft.net/ "Minecraft") の Mod 『[抜刀剣 / SlashBlade](https://minecraft.curseforge.com/projects/slashblade "SlashBlade")』の追加刀剣を、1.11.2 〜 1.12.2 に対応して１つにまとめました。
 
 This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/slashblade "SlashBlade")" MOD.
 
 ## 必要なもの / Requires
 
-* Minecraft 1.11.2
+for Minecraft 1.12.2
+* Minefraft Forge 1.12.2-14.23.0.2491
+* SlashBlade-mc1.12.1-r2
+
+for Minecraft 1.11.2
 * Minefraft Forge 1.11.2-13.20.0.2228 (or later)
 * SlashBlade-mc1.11-r9 (or later)
 

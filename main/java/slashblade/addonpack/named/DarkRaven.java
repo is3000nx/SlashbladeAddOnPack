@@ -65,8 +65,8 @@ public class DarkRaven
 		} else {
 			// << オリジナルからの改変点 >>
 			// ・ Twilight Forest Mod がなければ、「コウモリ」がドロップ
-			// ・ ドロップ率は 5% 固定
-			rateItemDrop = 0.05f;
+			// ・ ドロップ率は 15% 固定
+			rateItemDrop = 0.15f;
 			nameDropEntity = "Bat"; 
 		}
     
