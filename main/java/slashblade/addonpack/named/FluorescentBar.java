@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import slashblade.addonpack.AddonPack;
 
 /**
  * ケイコウトウ
@@ -56,23 +57,16 @@ public class FluorescentBar
 
 		ItemStack tiny = SlashBlade.findItemStack(SlashBlade.modid,SlashBlade.TinyBladeSoulStr,1);
 
-		SlashBlade.addRecipe(KEY,
-							 new ShapedOreRecipe(
-								 AddonPack.RecipeGroup,
-								 target,
-								 " PS",
-								 "PGP",
-								 "SP ",
-								 'P', Items.PAPER,
-								 'G', Blocks.GLASS,
-								 'S', tiny)
+		AddonPack.addRecipe(KEY,
+							new ShapedOreRecipe(
+								AddonPack.RecipeGroup,
+								target,
+								" PS",
+								"PGP",
+								"SP ",
+								'P', Items.PAPER,
+								'G', Blocks.GLASS,
+								'S', tiny)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

@@ -4,11 +4,9 @@ import java.util.Map;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.TagPropertyAccessor;
-import mods.flammpfeil.slashblade.TagPropertyAccessor;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
@@ -16,6 +14,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * 追加レシピの共通処理.
@@ -59,6 +58,7 @@ public class RecipeExtraNihilBlade
 	/**
 	 * コンストラクタ.
 	 *
+	 * @param group レシピグループ
 	 * @param result クラフト結果の刀
 	 * @param requiredBladeMain 素材として要求する刀
 	 * @param posXMain クラフト位置
@@ -69,7 +69,8 @@ public class RecipeExtraNihilBlade
 	 * @param remainedBladeSub サブの刀を残すかどうか
 	 * @param recipe レシピの情報
 	 */
-	public RecipeExtraNihilBlade(ItemStack result,
+	public RecipeExtraNihilBlade(ResourceLocation group,
+								 ItemStack result,
 								 ItemStack requiredBladeMain,
 								 int posXMain,
 								 int posYMain,
@@ -79,7 +80,7 @@ public class RecipeExtraNihilBlade
 								 boolean remainedBladeSub,
 								 Object... recipe)
 	{
-		super(AddonPack.RecipeGroup, result, recipe);
+		super(group, result, recipe);
 		
 		this.requiredBladeMain = requiredBladeMain;
 		this.posXMain = posXMain;
@@ -98,9 +99,9 @@ public class RecipeExtraNihilBlade
 	 * @param tag2
 	 * @return 0:等しい、1以上:tag1が大きい、-1以下:tag2が大きい
 	 */
-	protected static int tagValueCompare(TagPropertyAccessor access,
-									   NBTTagCompound tag1,
-									   NBTTagCompound tag2)
+	protected static int tagValueCompare(TagPropertyAccessor.TagPropertyInteger access,
+										 NBTTagCompound tag1,
+										 NBTTagCompound tag2)
 	{
 		return access.get(tag1).compareTo(access.get(tag2));
 	}
@@ -245,7 +246,7 @@ public class RecipeExtraNihilBlade
 				boolean canApplyFlag = enchantment.canApply(result);
 				if(canApplyFlag){
 					for(Enchantment curEnchantIndex : newItemEnchants.keySet()){
-						if (curEnchantIndex != enchantIndex && !enchantment.canApplyTogether(curEnchantIndex))
+						if (curEnchantIndex != enchantIndex && !enchantment.isCompatibleWith(curEnchantIndex))
 						{
 							canApplyFlag = false;
 							break;

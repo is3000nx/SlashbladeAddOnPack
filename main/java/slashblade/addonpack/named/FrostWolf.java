@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
+import slashblade.addonpack.AddonPack;
 import static slashblade.addonpack.AddonPack.NAME_TIZURU;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
 import static slashblade.addonpack.AddonPack.ID_GalePhantomSwords;
@@ -101,21 +102,30 @@ public class FrostWolf
 			NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(required);
 			ItemSlashBlade.RepairCount.set(tag, 10);
 			required.addEnchantment(Enchantments.FIRE_PROTECTION, 1);
+
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
+
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 
-			SlashBlade.addRecipe(KEY,
-								 new RecipeAwakeBlade(
-									 target,
-									 required,
-									 " IL",
-									 "CS ",
-									 "BQ ",
-									 'L', Items.DYE,	// "dyeBlack"
-									 'S', sphere,
-									 'B', required,
-									 'Q', Items.QUARTZ,
-									 'I', Blocks.ICE,
-									 'C', Blocks.SNOW)
+			AddonPack.addRecipe(KEY,
+								new RecipeAwakeBlade(
+									AddonPack.RecipeGroup,
+									target,
+									required,
+									" IL",
+									"CS ",
+									"BQ ",
+									'L', Items.DYE,	// "dyeBlack"
+									'S', sphere,
+									'B', required,
+									'Q', Items.QUARTZ,
+									'I', Blocks.ICE,
+									'C', Blocks.SNOW)
 				);
 		}
 
@@ -130,30 +140,31 @@ public class FrostWolf
 			NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(required);
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.FIRE_PROTECTION, 1);
+
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
+			
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 
-			SlashBlade.addRecipe(KEY,
-								 new RecipeAwakeBlade(
-									 target,
-									 required,
-									 " IG",
-									 "CS ",
-									 "BQ ",
-									 'S', sphere,
-									 'G', Items.GOLD_NUGGET,
-									 'B', required,
-									 'Q', Items.QUARTZ,
-									 'I', Blocks.ICE,
-									 'C', Blocks.SNOW)
+			AddonPack.addRecipe(KEY,
+								new RecipeAwakeBlade(
+									AddonPack.RecipeGroup,
+									target,
+									required,
+									" IG",
+									"CS ",
+									"BQ ",
+									'S', sphere,
+									'G', Items.GOLD_NUGGET,
+									'B', required,
+									'Q', Items.QUARTZ,
+									'I', Blocks.ICE,
+									'C', Blocks.SNOW)
 				);
 		}
-		
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

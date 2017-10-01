@@ -5,17 +5,22 @@ import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraft.util.ResourceLocation;
 
+/**
+ * 無神「刃無し」のレシピ
+ */
 public class RecipeKirisaya extends RecipeAwakeBlade
 {
 	private final ItemStack sphere;
   
-	public RecipeKirisaya(ItemStack result,
+	public RecipeKirisaya(ResourceLocation group,
+						  ItemStack result,
 						  ItemStack requiredStateBlade,
 						  ItemStack reqiredSphere,
 						  Object... recipe)
 	{
-		super(result, requiredStateBlade, recipe);
+		super(group, result, requiredStateBlade, recipe);
 		this.sphere = reqiredSphere;
 	}
   

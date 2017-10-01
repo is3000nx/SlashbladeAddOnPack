@@ -13,7 +13,6 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 /**
  * ヤミガラス
@@ -75,28 +74,6 @@ public class DarkRaven
 			nameDropEntity,
 			rateItemDrop,
 			target);
-
-		// ------------
-		// 実績画面で表示するためのダミーのレシピの登録
-
-		ItemStack egg = new ItemStack(Items.EGG);
-    
-		NBTTagCompound displayTag = new NBTTagCompound();
-		egg.setTagInfo("display", displayTag);
-		NBTTagList loreList = new NBTTagList();
-		loreList.appendTag(new NBTTagString(nameDropEntity));
-		loreList.appendTag(new NBTTagString(String.format("DropRate:%.2f%%", rateItemDrop * 100.0)));
-		displayTag.setTag("Lore", loreList);
-
-		SlashBlade.addRecipe(KEY,
-							 new ShapedOreRecipe(
-								 AddonPack.RecipeGroup,
-								 target,
-								 "   ",
-								 " E ",
-								 "   ",
-								 'E', egg),
-							 true);
 	}
 
 	/**
@@ -114,13 +91,5 @@ public class DarkRaven
 		} finally {
 			SlashBlade.mainConfiguration.save();
 		}
-	}
-  
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

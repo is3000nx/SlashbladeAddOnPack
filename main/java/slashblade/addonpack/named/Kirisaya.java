@@ -70,25 +70,26 @@ public class Kirisaya
 		required.addEnchantment(Enchantments.SHARPNESS, 3);
 		required.addEnchantment(Enchantments.POWER, 3);
 
-		SlashBlade.addRecipe(KEY,
-							 new RecipeKirisaya(
-								 target,
-								 required,
-								 sphere,
-								 "DGD",
-								 "ZBZ",
-								 "GDG",
-								 'G', new ItemStack(Items.GOLDEN_APPLE, 1, 1),
-								 'D', Items.RECORD_11,
-								 'B', required,
-								 'Z', sphere)
+		{
+			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//			String reqiredStr = NAME + ".reqired";
+//			SlashBlade.registerCustomItemStack(reqiredStr, required);
+//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		}
+		
+		AddonPack.addRecipe(KEY,
+							new RecipeKirisaya(
+								AddonPack.RecipeGroup,
+								target,
+								required,
+								sphere,
+								"DGD",
+								"ZBZ",
+								"GDG",
+								'G', new ItemStack(Items.GOLDEN_APPLE, 1, 1),
+								'D', Items.RECORD_11,
+								'B', required,
+								'Z', sphere)
 			);
-	}
-  
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

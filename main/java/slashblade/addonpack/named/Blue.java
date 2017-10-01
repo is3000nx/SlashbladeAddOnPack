@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 利刀「蒼梅」
@@ -52,25 +53,18 @@ public class Blue
 
         ItemStack sphere = SlashBlade.findItemStack(SlashBlade.modid, SlashBlade.SphereBladeSoulStr, 1);
 
-		SlashBlade.addRecipe(KEY,
-							 new ShapedOreRecipe(
-								 AddonPack.RecipeGroup,
-								 target,
-								 "LCS",
-								 "CS ",
-								 "BI ",
-								 'L', new ItemStack(Items.DYE, 1, 4),	//Lapis Lazuli
-								 'C', Blocks.COAL_BLOCK,
-								 'S', sphere,
-								 'B', Items.STICK,
-								 'I', Items.STRING)
+		AddonPack.addRecipe(KEY,
+							new ShapedOreRecipe(
+								AddonPack.RecipeGroup,
+								target,
+								"LCS",
+								"CS ",
+								"BI ",
+								'L', new ItemStack(Items.DYE, 1, 4),	//Lapis Lazuli
+								'C', Blocks.COAL_BLOCK,
+								'S', sphere,
+								'B', Items.STICK,
+								'I', Items.STRING)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
+import slashblade.addonpack.AddonPack;
 import static slashblade.addonpack.AddonPack.ID_None;
 import static slashblade.addonpack.AddonPack.ID_AquaEdge;
 import static slashblade.addonpack.AddonPack.ID_FlareSpiral;
@@ -176,14 +177,19 @@ public class Kamuy
 			ItemSlashBlade.ProudSoul.set(tag, 1000);
 			required.addEnchantment(Enchantments.LOOTING, 1);
 
-			SlashBlade.registerCustomItemStack(NAME+".reqired", required.copy());
-			ItemSlashBladeNamed.NamedBlades.add(NAME+".reqired");
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
 
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 			
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeAwakeBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required,
 					"SQS",
@@ -204,8 +210,12 @@ public class Kamuy
 		ItemSlashBlade.KillCount.set(tag, 2000);
 		ItemSlashBlade.ProudSoul.set(tag, 5000);
 
-		SlashBlade.registerCustomItemStack(NAME_BASE+".base.reqired", required.copy());
-		ItemSlashBladeNamed.NamedBlades.add(NAME_BASE+".base.reqired");
+		{
+			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//			String reqiredStr = NAME_BASE + ".base.reqired";
+//			SlashBlade.registerCustomItemStack(reqiredStr, required);
+//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		}
 
 		required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 		
@@ -216,9 +226,10 @@ public class Kamuy
 
 			ItemStack target = SlashBlade.getCustomBlade(NAME);
 			
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeAwakeBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required,
 					"S8S",
@@ -240,9 +251,10 @@ public class Kamuy
 
 			ItemStack target = SlashBlade.getCustomBlade(NAME);
 			
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeAwakeBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required,
 					"S8S",
@@ -264,9 +276,10 @@ public class Kamuy
 
 			ItemStack target = SlashBlade.getCustomBlade(NAME);
 			
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeAwakeBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required,
 					"S8S",
@@ -280,13 +293,6 @@ public class Kamuy
 					'2', Blocks.EMERALD_BLOCK)
 				);
 		}
-		
 	}
 
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
-	}
 }

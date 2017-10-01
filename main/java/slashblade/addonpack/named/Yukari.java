@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 結月刀「付喪-改」
@@ -65,26 +66,29 @@ public class Yukari
 		ItemStack required = SlashBlade.getCustomBlade(Tukumo.YuzukiTukumo);
 		NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(required);
 		ItemSlashBlade.KillCount.set(tag, 1000);
-		required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 		required.addEnchantment(Enchantments.FIRE_ASPECT, 1);
 
-		SlashBlade.addRecipe(KEY,
-							 new RecipeAwakeBlade(
-								 target,
-								 required,
-								 "ISI",
-								 "SBS",
-								 "ISI",
-								 'I', ingot,
-								 'S', sphere,
-								 'B', required)
+		{
+			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//			String reqiredStr = NAME + ".reqired";
+//			SlashBlade.registerCustomItemStack(reqiredStr, required);
+//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		}
+		
+		required.setItemDamage(OreDictionary.WILDCARD_VALUE);
+		
+		
+		AddonPack.addRecipe(KEY,
+							new RecipeAwakeBlade(
+								AddonPack.RecipeGroup,
+								target,
+								required,
+								"ISI",
+								"SBS",
+								"ISI",
+								'I', ingot,
+								'S', sphere,
+								'B', required)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import slashblade.addonpack.AddonPack;
 
 /**
  * ユキガラス
@@ -52,24 +53,18 @@ public class SnowCrow
 
 		ItemStack required = SlashBlade.getCustomBlade(Doutanuki.namedou);
 
-		SlashBlade.addRecipe(KEY,
-							 new RecipeAwakeBlade(
-								 target,
-								 required,
-								 " FQ",
-								 "SQ ",
-								 "B  ",
-								 'Q', Blocks.QUARTZ_BLOCK,
-								 'F', Items.FEATHER,
-								 'S', Items.SNOWBALL,
-								 'B', required)
+		AddonPack.addRecipe(KEY,
+							new RecipeAwakeBlade(
+								AddonPack.RecipeGroup,
+								target,
+								required,
+								" FQ",
+								"SQ ",
+								"B  ",
+								'Q', Blocks.QUARTZ_BLOCK,
+								'F', Items.FEATHER,
+								'S', Items.SNOWBALL,
+								'B', required)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

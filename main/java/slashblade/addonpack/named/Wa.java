@@ -5,6 +5,7 @@ import mods.flammpfeil.slashblade.SlashBlade;
 import net.minecraft.nbt.NBTTagCompound;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import net.minecraft.init.Items;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 和風MOD連携の「刀」「太刀」
@@ -58,9 +59,10 @@ public class Wa
 		ItemStack ingot = SlashBlade.findItemStack(SlashBlade.modid, SlashBlade.IngotBladeSoulStr, 1);
 		
 			
-		SlashBlade.addRecipe(
+		AddonPack.addRecipe(
 			KEY_A,
 			new RecipeWa(
+				AddonPack.RecipeGroup,
 				NAME_A,
 				TEXTURE_A,
 				"I S",
@@ -72,9 +74,10 @@ public class Wa
 				'B', Items.STICK)
 			);
 
-		SlashBlade.addRecipe(
+		AddonPack.addRecipe(
 			KEY_B,
 			new RecipeWa(
+				AddonPack.RecipeGroup,
 				NAME_B,
 				TEXTURE_B,
 				"I S",
@@ -85,13 +88,6 @@ public class Wa
 				'W', SlashBlade.wrapBlade,
 				'B', Items.STICK)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 
 	/**

@@ -9,6 +9,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 「似蛭」系の五振り
@@ -209,9 +210,10 @@ public class Nihil
 
 			ItemStack required = new ItemStack(SlashBlade.weapon);
     
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeAwakeBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required,
 					"SIS",
@@ -233,10 +235,17 @@ public class Nihil
 			ItemStack required = SlashBlade.getCustomBlade(NAME_NIHIL);
 
 			setRequiredCount(required, 1000, 1000, 1);
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
 			
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeAwakeBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required,
 					"SNS",
@@ -263,10 +272,17 @@ public class Nihil
 			ItemStack slashblade = new ItemStack(SlashBlade.weapon);
 
 			setRequiredCount(required, 3000, 6500, 3);
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
 
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeExtraNihilBlade(
+					AddonPack.RecipeGroup,
 					target,
 					required, 1, 1,
 					yamato, 1, 2, true,
@@ -292,10 +308,17 @@ public class Nihil
 			ItemStack requiredSub = SlashBlade.getCustomBlade(NAME_NIHIL);
 
 			setRequiredCount(requiredMain, 3000, 6500, 3);
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, requiredMain);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
 
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeExtraNihilBlade(
+					AddonPack.RecipeGroup,
 					target,
 					requiredMain, 1, 1,
 					requiredSub, 1, 0, false,
@@ -322,9 +345,10 @@ public class Nihil
 
 			setRequiredCount(requiredMain, 0, 0, 0);
 			
-			SlashBlade.addRecipe(
+			AddonPack.addRecipe(
 				KEY,
 				new RecipeExtraNihilBlade(
+					AddonPack.RecipeGroup,
 					target,
 					requiredMain, 0, 1,
 					requiredSub, 2, 1, false,
@@ -353,12 +377,5 @@ public class Nihil
 		ItemSlashBlade.RepairCount.set(tag, repair);
 		ItemSlashBlade.KillCount.set(tag, kill);
 		ItemSlashBlade.ProudSoul.set(tag, ps);
-	}
-	
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

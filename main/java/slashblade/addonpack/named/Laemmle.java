@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionUtils;
 import static slashblade.addonpack.AddonPack.NAME_TIZURU;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 錬金術師の太刀：幻魔練金拵
@@ -63,25 +64,19 @@ public class Laemmle
 			PotionTypes.STRONG_STRENGTH);
 		// ↑ 水入り瓶に魂片で作ったポーション
     
-		SlashBlade.addRecipe(KEY,
-							 new RecipeAwakeBlade(
-								 target,
-								 required,
-								 "XGO",
-								 "GBG",
-								 "QGX",
-								 'X', potion,
-								 'G', Items.GOLD_INGOT,
-								 'O', Blocks.OBSIDIAN,
-								 'Q', Blocks.QUARTZ_BLOCK,
-								 'B', required)
+		AddonPack.addRecipe(KEY,
+							new RecipeAwakeBlade(
+								AddonPack.RecipeGroup,
+								target,
+								required,
+								"XGO",
+								"GBG",
+								"QGX",
+								'X', potion,
+								'G', Items.GOLD_INGOT,
+								'O', Blocks.OBSIDIAN,
+								'Q', Blocks.QUARTZ_BLOCK,
+								'B', required)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

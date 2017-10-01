@@ -56,15 +56,10 @@ public class Toyako
 	 */
 	public static void registRecipe()
 	{
-//		VillagerProfession prof = new VillagerProfession(
-//			SlashBlade.modid + ":smith",
-//			"minecraft:textures/entity/villager/smith.png",
-//			"minecraft:textures/entity/zombie_villager/zombie_smith.png");
-
 		VillagerProfession prof = VillagerRegistry.getById(3);
 		//                                         ↑@Deprecated
 
-		VillagerCareer career = new VillagerCareer(prof, "weapon");
+		VillagerCareer career = new VillagerCareer(prof, "weapon2");
 		career
 			.addTrade(1, new EmeraldForItems(Items.COAL, new PriceInfo(16, 24)))
 			.addTrade(1, new ListItemForEmeralds(Items.IRON_AXE, new PriceInfo(6, 8)))
@@ -80,17 +75,6 @@ public class Toyako
 		// 武器屋と同じ取引内容を指定する。
 		// net.minecraft.entity.passive.EntityVillagerの
 		// DEFAULT_TRADE_LIST_MAP を参考。
-		
-//		VillagerRegistry.instance().register(prof);
-	}
-
-	/**
-	 * 実績登録.
-	 *
-	 * 実績無し。
-	 */
-	public static void registAchievement()
-	{
 	}
 
 	/**

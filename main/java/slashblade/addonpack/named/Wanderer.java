@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import mods.flammpfeil.slashblade.TagPropertyAccessor;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 風来の劒
@@ -75,27 +76,35 @@ public class Wanderer
 	public static void registRecipe()
 	{
 		ItemStack target = SlashBlade.getCustomBlade(NAME);
+		ItemStack ingot = SlashBlade.findItemStack(SlashBlade.modid,SlashBlade.IngotBladeSoulStr,1);
 
 		ItemStack required = SlashBlade.getCustomBlade(Doutanuki.namedou);
 		NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(required);
 		ItemSlashBlade.RepairCount.set(tag, 10);
+
+		{
+			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//			String reqiredStr = NAME + ".reqired";
+//			SlashBlade.registerCustomItemStack(reqiredStr, required);
+//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		}
+		
 		required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 
-		ItemStack ingot = SlashBlade.findItemStack(SlashBlade.modid,SlashBlade.IngotBladeSoulStr,1);
-
-
-		SlashBlade.addRecipe(KEY,
-							 new RecipeAwakeBlade(
-								 target,
-								 required,
-								 "  I",
-								 "QI ",
-								 "BC ",
-								 'B', required,
-								 'Q', Items.QUARTZ,
-								 'I', ingot,
-								 'C', Items.CLOCK
-								 )
+		
+		AddonPack.addRecipe(KEY,
+							new RecipeAwakeBlade(
+								AddonPack.RecipeGroup,
+								target,
+								required,
+								"  I",
+								"QI ",
+								"BC ",
+								'B', required,
+								'Q', Items.QUARTZ,
+								'I', ingot,
+								'C', Items.CLOCK
+								)
 			);
 
 		// @todo rfblade
@@ -130,13 +139,6 @@ public class Wanderer
 */
 	}
 	
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
-	}
-
 
 	public static final TagPropertyAccessor.TagPropertyBoolean IsFPNCore = new TagPropertyAccessor.TagPropertyBoolean("IsFPNCore");
 	

@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.world.World;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * 和風MOD連携の刀用レシピ
@@ -18,10 +19,10 @@ public class RecipeWa extends ShapedOreRecipe
 	/** 刀のテクスチャ名 */
 	private final String texture_;
 	
-    public RecipeWa(String name, String texture, Object... recipe)
+    public RecipeWa(ResourceLocation group, String name, String texture, Object... recipe)
 	{
         super(
-			AddonPack.RecipeGroup,
+			group,
 			SlashBlade.findItemStack(SlashBlade.modid, name, 1),
 			recipe);
 

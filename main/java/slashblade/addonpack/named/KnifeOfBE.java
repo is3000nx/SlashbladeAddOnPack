@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import slashblade.addonpack.AddonPack;
 
 /**
  * 型月刀「空の境界」
@@ -58,26 +59,20 @@ public class KnifeOfBE
 		ItemStack soul = SlashBlade.findItemStack(SlashBlade.modid, SlashBlade.ProudSoulStr, 1);
 		
 		ItemStack required = SlashBlade.getCustomBlade("slashbladeWhite");
-
 		NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(required);
+
 		required.setItemDamage(OreDictionary.WILDCARD_VALUE);
     
-		SlashBlade.addRecipe(KEY,
-							 new RecipeAwakeBlade(
-								 target,
-								 required,
-								 "SSS",
-								 "SBS",
-								 "SSS",
-								 'S', soul,
-								 'B', required)
+		AddonPack.addRecipe(KEY,
+							new RecipeAwakeBlade(
+								AddonPack.RecipeGroup,
+								target,
+								required,
+								"SSS",
+								"SBS",
+								"SSS",
+								'S', soul,
+								'B', required)
 			);
-	}
-
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
 	}
 }

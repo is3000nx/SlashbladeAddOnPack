@@ -4,7 +4,6 @@ import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.RecipeAwakeBlade;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
-import mods.flammpfeil.slashblade.named.Tukumo;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
@@ -12,10 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
-import static slashblade.addonpack.AddonPack.NAME_TIZURU;
+import slashblade.addonpack.AddonPack;
+import static slashblade.addonpack.AddonPack.ID_GalePhantomSwords;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
 import static slashblade.addonpack.AddonPack.ID_SpiralEdge;
-import static slashblade.addonpack.AddonPack.ID_GalePhantomSwords;
+import static slashblade.addonpack.AddonPack.NAME_TIZURU;
 
 /**
  * 
@@ -148,21 +148,30 @@ public class BladeMaster
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.POWER, 1);
 
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
+
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 
-			SlashBlade.addRecipe(KEY,
-								 new RecipeAwakeBlade(
-									 target,
-									 required,
-									 "SRE",
-									 "RE ",
-									 "BGC",
-									 'B', required,
-									 'E', Blocks.EMERALD_BLOCK,
-									 'R', Blocks.REDSTONE_BLOCK,
-									 'G', Blocks.GOLD_BLOCK,
-									 'C', sakura,
-									 'S', sphere)
+			
+			AddonPack.addRecipe(KEY,
+								new RecipeAwakeBlade(
+									AddonPack.RecipeGroup,
+									target,
+									required,
+									"SRE",
+									"RE ",
+									"BGC",
+									'B', required,
+									'E', Blocks.EMERALD_BLOCK,
+									'R', Blocks.REDSTONE_BLOCK,
+									'G', Blocks.GOLD_BLOCK,
+									'C', sakura,
+									'S', sphere)
 				);
 		}
 
@@ -180,23 +189,31 @@ public class BladeMaster
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.FIRE_PROTECTION, 1);
 
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
+			
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
+
 			
-			
-			SlashBlade.addRecipe(KEY,
-								 new RecipeAwakeBlade(
-									 target,
-									 required,
-									 "SRW",
-									 "RL ",
-									 "BGC",
-									 'B', required,
-									 'W', Items.WATER_BUCKET,
-									 'L', Items.LAVA_BUCKET,
-									 'R', Blocks.REDSTONE_BLOCK,
-									 'G', Blocks.GOLD_BLOCK,
-									 'C', sakura,
-									 'S', sphere)
+			AddonPack.addRecipe(KEY,
+								new RecipeAwakeBlade(
+									AddonPack.RecipeGroup,
+									target,
+									required,
+									"SRW",
+									"RL ",
+									"BGC",
+									'B', required,
+									'W', Items.WATER_BUCKET,
+									'L', Items.LAVA_BUCKET,
+									'R', Blocks.REDSTONE_BLOCK,
+									'G', Blocks.GOLD_BLOCK,
+									'C', sakura,
+									'S', sphere)
 				);
 		}
 
@@ -213,34 +230,34 @@ public class BladeMaster
 			ItemSlashBlade.KillCount.set(tag, 1000);
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.THORNS, 1);
+
+			{
+				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
+//				String reqiredStr = NAME + ".reqired";
+//				SlashBlade.registerCustomItemStack(reqiredStr, required);
+//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			}
 			
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
 			
 
-			SlashBlade.addRecipe(KEY,
-								 new RecipeAwakeBlade(
-									 target,
-									 required,
-									 "SRW",
-									 "RL ",
-									 "BGC",
-									 'B', required,
-									 'W', Blocks.QUARTZ_BLOCK,
-									 'L', Blocks.GLOWSTONE,
-									 'R', Blocks.REDSTONE_BLOCK,
-									 'G', Blocks.GOLD_BLOCK,
-									 'C', sakura,
-									 'S', sphere)
+			AddonPack.addRecipe(KEY,
+								new RecipeAwakeBlade(
+									AddonPack.RecipeGroup,
+									target,
+									required,
+									"SRW",
+									"RL ",
+									"BGC",
+									'B', required,
+									'W', Blocks.QUARTZ_BLOCK,
+									'L', Blocks.GLOWSTONE,
+									'R', Blocks.REDSTONE_BLOCK,
+									'G', Blocks.GOLD_BLOCK,
+									'C', sakura,
+									'S', sphere)
 				);
 		}
-		
-		
 	}
 
-	/**
-	 * 実績登録.
-	 */
-	public static void registAchievement()
-	{
-	}
 }

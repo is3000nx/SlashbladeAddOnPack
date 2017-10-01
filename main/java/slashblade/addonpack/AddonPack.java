@@ -5,19 +5,19 @@ import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.event.LoadEvent;
 import mods.flammpfeil.slashblade.specialeffect.ISpecialEffect;
 import mods.flammpfeil.slashblade.specialeffect.SpecialEffects;
-import mods.flammpfeil.slashblade.util.SlashBladeAchievementCreateEvent;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import slashblade.addonpack.ability.*;
+import slashblade.addonpack.entity.*;
 import slashblade.addonpack.named.*;
 import slashblade.addonpack.specialattack.*;
 import slashblade.addonpack.specialeffect.*;
-import slashblade.addonpack.ability.*;
-import slashblade.addonpack.entity.*;
-import net.minecraftforge.common.MinecraftForge;
 
 /**
  * 追加刀剣 詰め合わせ
@@ -30,7 +30,7 @@ public class AddonPack
 {
 	public static final String modname = "Slashblade-AddonPack";
 	public static final String modid = "slashblade.addonpack";
-	public static final String version = "mc1.12.1-r3";
+	public static final String version = "mc1.12.2-r3";
 
 	public static final ResourceLocation RecipeGroup = new ResourceLocation(SlashBlade.modid,"addon_pack");
 
@@ -151,42 +151,6 @@ public class AddonPack
 	}
 
 	/**
-	 * 初期化処理その３.
-	 *
-	 * 実績登録
-	 */
-	@SubscribeEvent
-	public void onSlashBladeAchievementCreate(SlashBladeAchievementCreateEvent event)
-	{
-		BladeMaster.registAchievement();
-
-		Yukari.registAchievement();
-		KnifeOfBE.registAchievement();
-
-		Laemmle.registAchievement();
-
-		DarkRaven.registAchievement();
-		SnowCrow.registAchievement();
-
-		Nihil.registAchievement();
-
-		Toyako.registAchievement();
-		FluorescentBar.registAchievement();
-
-		Wanderer.registAchievement();
-
-		FrostWolf.registAchievement();
-		
-		Kamuy.registAchievement();
-
-		Kirisaya.registAchievement();
-
-		Blue.registAchievement();
-
-		Wa.registAchievement();
-	}
-
-	/**
 	 * 追加エンティティの登録
 	 */
 	private void registEntity()
@@ -280,4 +244,29 @@ public class AddonPack
 	{
         MinecraftForge.EVENT_BUS.register(new EnderTeleportCanceller());
 	}
+
+	/**
+	 * レシピの登録（補助）.
+	 *
+	 * @param key SlashBlade管理のレシピ登録キー
+	 * @param name Minecraft管理のレシピ登録名
+	 * @param recipe レシピ
+	 */
+	public static void addRecipe(String key, String name, IRecipe recipe)
+	{
+		recipe.setRegistryName(new ResourceLocation(SlashBlade.modid, name));
+		SlashBlade.addRecipe(key, recipe);
+	}
+
+	/**
+	 * レシピの登録（補助）.
+	 *
+	 * @param key レシピ登録キー
+	 * @param recipe レシピ
+	 */
+	public static void addRecipe(String key, IRecipe recipe)
+	{
+		addRecipe(key, key, recipe);
+	}
+	
 }
