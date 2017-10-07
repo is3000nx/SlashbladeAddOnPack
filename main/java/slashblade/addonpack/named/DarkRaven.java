@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.common.Loader;
+import slashblade.addonpack.util.Config;
 
 /**
  * ヤミガラス
@@ -60,13 +61,13 @@ public class DarkRaven
 		float rateItemDrop;
 		String nameDropEntity;
 		if (Loader.isModLoaded("TwilightForest")) {
-			rateItemDrop = getItemDropRateFromConfig();
+			rateItemDrop = Config.getDarkRavenDropRateWithMod();
 			nameDropEntity = "TwilightForest.Forest Raven"; 
 		} else {
 			// << オリジナルからの改変点 >>
 			// ・ Twilight Forest Mod がなければ、「コウモリ」がドロップ
-			// ・ ドロップ率は 15% 固定
-			rateItemDrop = 0.15f;
+			// ・ ドロップ率は独自の設定値を使う
+			rateItemDrop = Config.getDarkRavenDropRate();
 			nameDropEntity = "Bat"; 
 		}
     
@@ -74,22 +75,5 @@ public class DarkRaven
 			nameDropEntity,
 			rateItemDrop,
 			target);
-	}
-
-	/**
-	 * 設定ファイルからアイテムのドロップ率を取得する。
-	 *
-	 * @return ドロップ率
-	 */
-	private static float getItemDropRateFromConfig()
-	{
-		float fact = 0.05f;
-		try {
-			SlashBlade.mainConfiguration.load();
-			Property prop = SlashBlade.mainConfiguration.get("general", "DarkRavenDropRate", fact);
-			return (float)prop.getDouble();
-		} finally {
-			SlashBlade.mainConfiguration.save();
-		}
 	}
 }

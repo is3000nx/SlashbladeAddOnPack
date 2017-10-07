@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import slashblade.addonpack.AddonPack;
+import slashblade.addonpack.util.Config;
 import static slashblade.addonpack.AddonPack.ID_None;
 import static slashblade.addonpack.AddonPack.ID_AquaEdge;
 import static slashblade.addonpack.AddonPack.ID_FlareSpiral;
@@ -177,11 +178,10 @@ public class Kamuy
 			ItemSlashBlade.ProudSoul.set(tag, 1000);
 			required.addEnchantment(Enchantments.LOOTING, 1);
 
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, required);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, required);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
@@ -210,11 +210,10 @@ public class Kamuy
 		ItemSlashBlade.KillCount.set(tag, 2000);
 		ItemSlashBlade.ProudSoul.set(tag, 5000);
 
-		{
-			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//			String reqiredStr = NAME_BASE + ".base.reqired";
-//			SlashBlade.registerCustomItemStack(reqiredStr, required);
-//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		if (Config.isRegistRequiredBlade()) {
+			String reqiredStr = NAME_BASE + ".base.reqired";
+			SlashBlade.registerCustomItemStack(reqiredStr, required);
+			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 		}
 
 		required.setItemDamage(OreDictionary.WILDCARD_VALUE);

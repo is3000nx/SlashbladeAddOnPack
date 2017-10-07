@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import slashblade.addonpack.AddonPack;
+import slashblade.addonpack.util.Config;
 
 /**
  * 無神「刃無し」
@@ -70,11 +71,10 @@ public class Kirisaya
 		required.addEnchantment(Enchantments.SHARPNESS, 3);
 		required.addEnchantment(Enchantments.POWER, 3);
 
-		{
-			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//			String reqiredStr = NAME + ".reqired";
-//			SlashBlade.registerCustomItemStack(reqiredStr, required);
-//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		if (Config.isRegistRequiredBlade()) {
+			String reqiredStr = NAME + ".reqired";
+			SlashBlade.registerCustomItemStack(reqiredStr, required);
+			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 		}
 		
 		AddonPack.addRecipe(KEY,

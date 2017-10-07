@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import slashblade.addonpack.AddonPack;
+import slashblade.addonpack.util.Config;
 import static slashblade.addonpack.AddonPack.ID_GalePhantomSwords;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
 import static slashblade.addonpack.AddonPack.ID_SpiralEdge;
@@ -148,11 +149,10 @@ public class BladeMaster
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.POWER, 1);
 
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, required);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, required);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
@@ -189,11 +189,10 @@ public class BladeMaster
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.FIRE_PROTECTION, 1);
 
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, required);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, required);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 			
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);
@@ -231,11 +230,10 @@ public class BladeMaster
 			ItemSlashBlade.RepairCount.set(tag, 25);
 			required.addEnchantment(Enchantments.THORNS, 1);
 
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, required);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, required);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 			
 			required.setItemDamage(OreDictionary.WILDCARD_VALUE);

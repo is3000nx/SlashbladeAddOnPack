@@ -13,6 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import mods.flammpfeil.slashblade.TagPropertyAccessor;
 import static slashblade.addonpack.AddonPack.ID_RapidPhantomSwords;
 import slashblade.addonpack.AddonPack;
+import slashblade.addonpack.util.Config;
 
 /**
  * 風来の劒
@@ -82,11 +83,10 @@ public class Wanderer
 		NBTTagCompound tag = ItemSlashBlade.getItemTagCompound(required);
 		ItemSlashBlade.RepairCount.set(tag, 10);
 
-		{
-			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//			String reqiredStr = NAME + ".reqired";
-//			SlashBlade.registerCustomItemStack(reqiredStr, required);
-//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		if (Config.isRegistRequiredBlade()) {
+			String reqiredStr = NAME + ".reqired";
+			SlashBlade.registerCustomItemStack(reqiredStr, required);
+			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 		}
 		
 		required.setItemDamage(OreDictionary.WILDCARD_VALUE);

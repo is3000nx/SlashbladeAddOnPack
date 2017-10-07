@@ -8,8 +8,8 @@ This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/sl
 ## 必要なもの / Requires
 
 for Minecraft 1.12.2
-* Minefraft Forge 1.12.2-14.23.0.2491
-* SlashBlade-mc1.12.1-r2
+* Minefraft Forge 1.12.2-14.23.0.2491 (or later)
+* SlashBlade-mc1.12.1-r2 (or later)
 
 for Minecraft 1.11.2
 * Minefraft Forge 1.11.2-13.20.0.2228 (or later)

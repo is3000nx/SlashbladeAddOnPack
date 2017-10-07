@@ -10,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import slashblade.addonpack.AddonPack;
+import slashblade.addonpack.util.Config;
 
 /**
  * 「似蛭」系の五振り
@@ -235,11 +236,11 @@ public class Nihil
 			ItemStack required = SlashBlade.getCustomBlade(NAME_NIHIL);
 
 			setRequiredCount(required, 1000, 1000, 1);
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, required);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, required);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 			
 			AddonPack.addRecipe(
@@ -272,11 +273,11 @@ public class Nihil
 			ItemStack slashblade = new ItemStack(SlashBlade.weapon);
 
 			setRequiredCount(required, 3000, 6500, 3);
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, required);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, required);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 
 			AddonPack.addRecipe(
@@ -308,11 +309,11 @@ public class Nihil
 			ItemStack requiredSub = SlashBlade.getCustomBlade(NAME_NIHIL);
 
 			setRequiredCount(requiredMain, 3000, 6500, 3);
-			{
-				// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//				String reqiredStr = NAME + ".reqired";
-//				SlashBlade.registerCustomItemStack(reqiredStr, requiredMain);
-//				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+
+			if (Config.isRegistRequiredBlade()) {
+				String reqiredStr = NAME + ".reqired";
+				SlashBlade.registerCustomItemStack(reqiredStr, requiredMain);
+				ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 			}
 
 			AddonPack.addRecipe(

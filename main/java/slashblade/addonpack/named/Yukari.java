@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import slashblade.addonpack.AddonPack;
+import slashblade.addonpack.util.Config;
 
 /**
  * 結月刀「付喪-改」
@@ -68,11 +69,10 @@ public class Yukari
 		ItemSlashBlade.KillCount.set(tag, 1000);
 		required.addEnchantment(Enchantments.FIRE_ASPECT, 1);
 
-		{
-			// Creative mode 用(?)、クラフトの前提を満たした刀の登録
-//			String reqiredStr = NAME + ".reqired";
-//			SlashBlade.registerCustomItemStack(reqiredStr, required);
-//			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
+		if (Config.isRegistRequiredBlade()) {
+			String reqiredStr = NAME + ".reqired";
+			SlashBlade.registerCustomItemStack(reqiredStr, required);
+			ItemSlashBladeNamed.NamedBlades.add(reqiredStr);
 		}
 		
 		required.setItemDamage(OreDictionary.WILDCARD_VALUE);
