@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.common.Loader;
@@ -59,16 +60,16 @@ public class DarkRaven
 		ItemStack target = SlashBlade.getCustomBlade(NAME);
 		
 		float rateItemDrop;
-		String nameDropEntity;
-		if (Loader.isModLoaded("TwilightForest")) {
+		ResourceLocation nameDropEntity;
+		if (Loader.isModLoaded("twilightforest")) {
 			rateItemDrop = Config.getDarkRavenDropRateWithMod();
-			nameDropEntity = "TwilightForest.Forest Raven"; 
+			nameDropEntity = new ResourceLocation("twilightforest", "raven"); 
 		} else {
 			// << オリジナルからの改変点 >>
 			// ・ Twilight Forest Mod がなければ、「コウモリ」がドロップ
 			// ・ ドロップ率は独自の設定値を使う
 			rateItemDrop = Config.getDarkRavenDropRate();
-			nameDropEntity = "Bat"; 
+			nameDropEntity = new ResourceLocation("bat");
 		}
     
 		DropEventHandler.registerEntityDrop(

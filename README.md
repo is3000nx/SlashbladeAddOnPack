@@ -9,7 +9,7 @@ This is an add-on for "[SlashBlade](https://minecraft.curseforge.com/projects/sl
 
 for Minecraft 1.12.2
 * Minefraft Forge 1.12.2-14.23.0.2491 (or later)
-* SlashBlade-mc1.12.1-r2 (or later)
+* SlashBlade-mc1.12.1-r5
 
 for Minecraft 1.11.2
 * Minefraft Forge 1.11.2-13.20.0.2228 (or later)
