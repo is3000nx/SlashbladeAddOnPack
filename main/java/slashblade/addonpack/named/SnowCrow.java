@@ -34,7 +34,7 @@ public class SnowCrow
     
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 		ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.IRON.getDamageVsEntity());
+		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.IRON.getAttackDamage());
 		ItemSlashBlade.TextureName.set(tag, "named/darkraven/snowcrow");
 		ItemSlashBlade.ModelName.set(tag, "named/darkraven/snowcrow");
 		ItemSlashBlade.StandbyRenderType.set(tag, 2);

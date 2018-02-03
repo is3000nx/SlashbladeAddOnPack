@@ -39,7 +39,7 @@ public class Toyako
     
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 		ItemSlashBladeNamed.CustomMaxDamage.set(tag, 70);
-		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.STONE.getDamageVsEntity());
+		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.STONE.getAttackDamage());
 		ItemSlashBlade.TextureName.set(tag, "named/toyako/toyako");
 		ItemSlashBlade.ModelName.set(tag, "named/toyako/toyako");
 		ItemSlashBlade.SpecialAttackType.set(tag, 4);

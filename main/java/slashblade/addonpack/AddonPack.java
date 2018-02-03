@@ -30,7 +30,7 @@ public class AddonPack
 {
 	public static final String modname = "Slashblade-AddonPack";
 	public static final String modid = "slashblade.addonpack";
-	public static final String version = "mc1.12.2-r5";
+	public static final String version = "mc1.12.2-r6";
 
 	public static final ResourceLocation RecipeGroup = new ResourceLocation(SlashBlade.modid,"addon_pack");
 

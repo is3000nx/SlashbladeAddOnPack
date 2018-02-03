@@ -80,7 +80,7 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 		int id = ItemSlashBlade.TargetEntityId.get(tag);
 		if (id != 0) {
 			Entity entity = player.world.getEntityByID(id);
-			if (entity != null && entity.getDistanceToEntity(player) < 30.0f)
+			if (entity != null && entity.getDistance(player) < 30.0f)
 				return entity;
 		}
 		return getEntityToWatch(player);
@@ -112,7 +112,7 @@ abstract public class PhantomSwordsBase extends SpecialAttackBase
 			float distance = 30.0f;
 
 			for (Entity entity : list) {
-				float curDist = entity.getDistanceToEntity(player);
+				float curDist = entity.getDistance(player);
 				if (curDist < distance) {
 					target = entity;
 					distance = curDist;

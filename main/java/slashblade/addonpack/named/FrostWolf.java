@@ -48,7 +48,7 @@ public class FrostWolf
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 50);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/frostwolf/frostwolfa");
 			ItemSlashBlade.ModelName.set(tag, "named/frostwolf/frostwolfa");
@@ -70,7 +70,7 @@ public class FrostWolf
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 50);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/frostwolf/frostwolfb");
 			ItemSlashBlade.ModelName.set(tag, "named/frostwolf/frostwolfb");

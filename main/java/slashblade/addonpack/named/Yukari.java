@@ -35,7 +35,7 @@ public class Yukari
 
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 		ItemSlashBladeNamed.CustomMaxDamage.set(tag, 50);
-		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 		ItemSlashBlade.TextureName.set(tag, "named/yukari/texture");
 		ItemSlashBlade.ModelName.set(tag, "named/yukari/model");

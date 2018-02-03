@@ -338,7 +338,7 @@ public class EntityPhantomSwordEx extends EntityBase
 			if (!entity.canBeCollidedWith())
 				continue;
 
-			double d1 = entity.getDistanceToEntity(this);
+			double d1 = entity.getDistance(this);
 			if (d1 < d0 /* || d0 == 0.0*/) {
 				hitEntity = entity;
 				d0 = d1;

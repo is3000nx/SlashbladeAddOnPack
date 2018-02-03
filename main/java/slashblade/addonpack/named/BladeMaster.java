@@ -52,7 +52,7 @@ public class BladeMaster
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/blademaster/greenmist");
 			ItemSlashBlade.ModelName.set(tag, "named/blademaster/blademaster");
@@ -78,7 +78,7 @@ public class BladeMaster
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/blademaster/aquablaze");
 			ItemSlashBlade.ModelName.set(tag, "named/blademaster/blademaster");
@@ -104,7 +104,7 @@ public class BladeMaster
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/blademaster/moonlightcherry");
 			ItemSlashBlade.ModelName.set(tag, "named/blademaster/blademaster");

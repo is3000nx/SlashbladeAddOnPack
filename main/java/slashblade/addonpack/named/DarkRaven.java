@@ -38,7 +38,7 @@ public class DarkRaven
     
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 		ItemSlashBladeNamed.CustomMaxDamage.set(tag, 80);
-		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 		ItemSlashBlade.TextureName.set(tag, "named/darkraven/darkraven");
 		ItemSlashBlade.ModelName.set(tag, "named/darkraven/darkraven");
 		ItemSlashBlade.SpecialAttackType.set(tag, 2);

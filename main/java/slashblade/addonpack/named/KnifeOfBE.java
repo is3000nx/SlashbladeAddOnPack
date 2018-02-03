@@ -33,7 +33,7 @@ public class KnifeOfBE
     
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 		ItemSlashBladeNamed.CustomMaxDamage.set(tag, 70);
-		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 		ItemSlashBlade.TextureName.set(tag, "named/tboen/texture");
 		ItemSlashBlade.ModelName.set(tag, "named/tboen/model");

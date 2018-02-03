@@ -37,7 +37,7 @@ public class Laemmle
     
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 		ItemSlashBladeNamed.CustomMaxDamage.set(tag, 80);
-		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+		ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 		ItemSlashBlade.TextureName.set(tag, "named/laemmle/lem");
 		ItemSlashBlade.ModelName.set(tag, "named/laemmle/blade");

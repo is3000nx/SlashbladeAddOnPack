@@ -56,7 +56,7 @@ public class Kamuy
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/kamuy/kamuy");
 			ItemSlashBlade.ModelName.set(tag, "named/kamuy/kamuy");
@@ -81,7 +81,7 @@ public class Kamuy
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/kamuy/water");
 			ItemSlashBlade.ModelName.set(tag, "named/kamuy/kamuy");
@@ -109,7 +109,7 @@ public class Kamuy
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/kamuy/fire");
 			ItemSlashBlade.ModelName.set(tag, "named/kamuy/kamuy");
@@ -137,7 +137,7 @@ public class Kamuy
 
 			ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
 			ItemSlashBladeNamed.CustomMaxDamage.set(tag, 60);
-			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+			ItemSlashBlade.setBaseAttackModifier(tag, 4 + Item.ToolMaterial.DIAMOND.getAttackDamage());
 
 			ItemSlashBlade.TextureName.set(tag, "named/kamuy/lightning");
 			ItemSlashBlade.ModelName.set(tag, "named/kamuy/kamuy");

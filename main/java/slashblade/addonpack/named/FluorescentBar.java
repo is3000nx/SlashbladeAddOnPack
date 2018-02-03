@@ -33,7 +33,7 @@ public class FluorescentBar
 		blade.setTagCompound(tag);
 
 		ItemSlashBladeNamed.CurrentItemName.set(tag, NAME);
-		ItemSlashBladeNamed.CustomMaxDamage.set(tag, (int)Item.ToolMaterial.DIAMOND.getDamageVsEntity());
+		ItemSlashBladeNamed.CustomMaxDamage.set(tag, (int)Item.ToolMaterial.DIAMOND.getAttackDamage());
 		ItemSlashBlade.setBaseAttackModifier(tag, 2.0f);
 
 		ItemSlashBlade.TextureName.set(tag, "named/fluorescentbar/fluorescentbar");
