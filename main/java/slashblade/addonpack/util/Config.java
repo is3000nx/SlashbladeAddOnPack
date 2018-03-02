@@ -29,7 +29,7 @@ public class Config
 	public static float getDarkRavenDropRate()
 	{
 		Configuration config = SlashBlade.mainConfiguration;
-		Property prop = config.get("addon", "DarkRavenDropRate", 0.15);
+		Property prop = config.get("addon", "DarkRavenDropRate", 0.05);
 		return (float)prop.getDouble();
 	}
 
