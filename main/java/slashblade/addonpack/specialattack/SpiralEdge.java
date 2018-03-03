@@ -63,12 +63,15 @@ public class SpiralEdge	extends SpecialAttackBase
 			.expand(5.0, 0.25, 5.0);
       
 		List<Entity> list = world.getEntitiesInAABBexcluding(player, bb, EntitySelectorAttackable.getInstance());
-		if (!list.isEmpty())
-			StylishRankManager.setNextAttackType(player, AttackType);
+
+		if (!stack.isEmpty()) {
+			if (!list.isEmpty())
+				StylishRankManager.setNextAttackType(player, AttackType);
       
-		for (Entity curEntity : list) {
-			blade.attackTargetEntity(stack, curEntity, player, true);
-			player.onCriticalHit(curEntity);
+			for (Entity curEntity : list) {
+				blade.attackTargetEntity(stack, curEntity, player, true);
+				player.onCriticalHit(curEntity);
+			}
 		}
       
 

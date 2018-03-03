@@ -236,7 +236,10 @@ abstract class EntityBase extends Entity implements IThrowableEntity
 
 		list.removeAll(alreadyHitEntity_);
 		alreadyHitEntity_.addAll(list);
-        
+
+		if (blade_.isEmpty())
+			return false;		
+
 		for (Entity target : list) {
 			if (!isDestruction(target))
 				continue;
